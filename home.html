@@ -4,9 +4,268 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home - VolunteerHub</title>
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css"> 
+    
+    <style>
+        /* Custom CSS untuk halaman home */
+        :root {
+            --vh-green: #28a745; /* Default Bootstrap Green */
+            --vh-dark-text: #343a40; /* Darker text for headings */
+            --vh-light-gray: #f8f9fa; /* Light gray background */
+            --vh-custom-green: #20C997; /* Warna hijau toska yang baru untuk tombol filter */
+        }
+
+        .custom-bg {
+            background-color: var(--vh-light-gray) !important;
+        }
+
+        .custom-logo-color {
+            color: #9C27B0 !important; /* Ungu */
+        }
+
+        .hero-section {
+            background-color: #EDE7F6; /* Light purple background */
+            padding: 80px 0;
+            text-align: center;
+        }
+        .hero-section h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--vh-dark-text);
+            margin-bottom: 20px;
+        }
+        .hero-section p {
+            font-size: 1.25rem;
+            color: #6c757d;
+            margin-bottom: 30px;
+        }
+        .hero-section .btn {
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 8px;
+        }
+        .hero-section .btn-primary {
+            background-color: #9C27B0; /* Purple */
+            border-color: #9C27B0;
+        }
+        .hero-section .btn-secondary {
+            background-color: transparent;
+            border-color: #9C27B0;
+            color: #9C27B0;
+        }
+        .hero-section .btn-primary:hover {
+            background-color: #7B1FA2;
+            border-color: #7B1FA2;
+        }
+        .hero-section .btn-secondary:hover {
+            background-color: #9C27B0;
+            color: white;
+        }
+
+        .search-bar {
+            background-color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-top: -60px; /* Overlap with hero section */
+            position: relative;
+            z-index: 10;
+        }
+        .search-bar .form-control {
+            border: none;
+            box-shadow: none;
+            padding: 10px 15px;
+            height: auto;
+        }
+        .search-bar .btn {
+            background-color: #9C27B0; /* Purple */
+            border-color: #9C27B0;
+            padding: 10px 20px;
+        }
+        .search-bar .btn:hover {
+            background-color: #7B1FA2;
+            border-color: #7B1FA2;
+        }
+
+        /* Filter & Category Sections */
+        .filter-card, .category-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .filter-card h5, .category-card h5 {
+            font-weight: bold;
+            color: var(--vh-dark-text);
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        .filter-item, .category-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            cursor: pointer;
+            padding: 8px 0;
+            border-radius: 5px;
+            transition: background-color 0.2s;
+        }
+        .filter-item:hover, .category-item:hover {
+            background-color: #f5f5f5;
+        }
+        .filter-item i, .category-item i {
+            color: #9C27B0; /* Purple icon */
+            margin-right: 12px;
+            font-size: 1.1rem;
+            width: 25px;
+            text-align: center;
+        }
+        .filter-item span, .category-item span {
+            color: var(--vh-dark-text);
+            font-weight: 500;
+        }
+        .filter-card .btn, .category-card .btn {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            font-weight: 600;
+            margin-top: 15px;
+        }
+
+        /* NEW CUSTOM GREEN BUTTON COLOR */
+        .btn-custom-green-filter {
+            background-color: var(--vh-custom-green); /* Hijau toska */
+            border-color: var(--vh-custom-green);
+            color: white;
+        }
+        .btn-custom-green-filter:hover {
+            background-color: #1aae84; /* Slightly darker toska on hover */
+            border-color: #1aae84;
+            color: white;
+        }
+        
+        /* Event Cards */
+        .event-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            margin-bottom: 25px;
+            overflow: hidden;
+            transition: transform 0.2s ease-in-out;
+        }
+        .event-card:hover {
+            transform: translateY(-5px);
+        }
+        .event-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .event-card .card-body {
+            padding: 20px;
+        }
+        .event-card .card-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: var(--vh-dark-text);
+            margin-bottom: 10px;
+        }
+        .event-card .card-subtitle {
+            font-size: 0.9rem;
+            color: #6c757d;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .event-card .card-subtitle i {
+            margin-right: 5px;
+            color: #9C27B0;
+        }
+        .event-card .badge-organization {
+            background-color: #EDE7F6; /* Light purple */
+            color: #9C27B0; /* Dark purple */
+            font-weight: 600;
+            padding: 6px 10px;
+            border-radius: 5px;
+            font-size: 0.85rem;
+        }
+        .event-card .btn-outline-primary {
+            color: #9C27B0;
+            border-color: #9C27B0;
+            font-weight: 600;
+        }
+        .event-card .btn-outline-primary:hover {
+            background-color: #9C27B0;
+            color: white;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #424242; /* Dark gray */
+            color: #ECEFF1; /* Light text */
+            padding: 40px 0;
+            font-size: 0.9rem;
+        }
+        .footer-logo-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .footer-logo-icon {
+            background-color: #9C27B0; /* Purple */
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-right: 10px;
+        }
+        .footer-logo-text {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+        }
+        .footer-description {
+            color: #CFD8DC;
+            line-height: 1.6;
+        }
+        .footer-link-group h6 {
+            font-weight: bold;
+            color: white;
+            margin-bottom: 15px;
+        }
+        .footer-link-group a {
+            color: #CFD8DC;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 8px;
+            transition: color 0.2s;
+        }
+        .footer-link-group a:hover {
+            color: #9C27B0; /* Purple */
+        }
+        .footer-link-group.contact-info p {
+            margin-bottom: 8px;
+            color: #CFD8DC;
+        }
+        .footer-link-group.contact-info a {
+            display: inline;
+        }
+        .copyright {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #607D8B;
+            color: #B0BEC5;
+        }
+    </style>
 </head>
 <body class="bg-light custom-bg">
 
@@ -16,10 +275,14 @@
             <div class="container-fluid mx-lg-5">
                 <a class="navbar-brand fw-bold fs-4 custom-logo-color me-4" href="home.html">VolunteerHub</a>
                 
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active fw-bold custom-link" href="home.html">Home</a>
+                            <a class="nav-link active text-secondary" aria-current="page" href="home.html">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-secondary" href="volunteer.html">Volunteer</a>
@@ -31,11 +294,11 @@
                 </div>
 
                 <div class="d-flex align-items-center">
-                    <span class="me-3 text-secondary">Hi, Bup!</span>
+                    <span class="me-3 text-secondary">Hi, Powerangers!</span>
                     
-                    <a href="notification.html" class="notification-bell-icon me-3">
+                    <a href="notification.html" class="btn btn-light rounded-circle d-flex align-items-center justify-content-center me-3" 
+                       style="width: 40px; height: 40px; background-color: #f0f0f0; border-color: #ccc;">
                         <i class="fas fa-bell"></i>
-                        <span class="notification-badge">3</span>
                     </a>
                     
                     <a href="index.html" class="rounded-circle d-flex align-items-center justify-content-center ms-2" 
@@ -48,130 +311,150 @@
                 </div>
             </div>
         </header>
-        <main class="flex-grow-1 container py-4 main-content-area">
-            
-            <div class="hero-banner">
-                <div class="hero-text text-start pe-lg-5">
-                    <p class="mb-0 fs-5 text-dark">JOIN US:</p>
-                    <h1>10.000 POHON UNTUK INDONESIA</h1>
-                    <div class="date"><i class="fas fa-calendar-alt"></i><span>30 September 2025</span></div>
+
+        <main class="flex-grow-1">
+            <section class="hero-section">
+                <div class="container">
+                    <h1>Temukan Peluang Volunteer Ideal Anda</h1>
+                    <p>Jelajahi berbagai event dan program volunteer yang sesuai dengan minat dan keahlian Anda.</p>
+                    <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                        <a href="volunteer.html" class="btn btn-primary btn-lg px-4 gap-3">Cari Event Volunteer</a>
+                        <a href="#" class="btn btn-secondary btn-lg px-4">Bagaimana Cara Kerjanya?</a>
+                    </div>
                 </div>
-                <img src="https://picsum.photos/600/300?random=1" alt="Kegiatan Volunteer" class="hero-image d-none d-lg-block">
-            </div>
+            </section>
 
-            <div class="row">
-                
-                <div class="col-lg-3">
-                    
-                    <div class="sidebar-box">
-                        <h4>Category</h4>
-                        <div class="category-list">
-                            <div class="category-item"><i class="fas fa-tree"></i> Environment & Nature</div>
-                            <div class="category-item"><i class="fas fa-hand-holding-heart"></i> Social & Humanitarian</div>
-                            <div class="category-item"><i class="fas fa-graduation-cap"></i> Education & Mentoring</div>
-                            <div class="category-item"><i class="fas fa-paint-brush"></i> Arts, Culture & Creativity</div>
-                            <div class="category-item"><i class="fas fa-heartbeat"></i> Health & Fitness</div>
-                            <div class="category-item"><i class="fas fa-code"></i> Technology & Digital</div>
-                            <div class="category-item"><i class="fas fa-calendar-alt"></i> Events & Festivals</div>
-                        </div>
-                        <button class="btn btn-category">Apply Category</button>
+            <section class="container search-bar mb-5">
+                <form class="row g-3 align-items-center">
+                    <div class="col-12 col-md-5">
+                        <label for="search-keyword" class="visually-hidden">Cari Event</label>
+                        <input type="text" class="form-control form-control-lg" id="search-keyword" placeholder="Cari event volunteer...">
                     </div>
-
-                    <div class="sidebar-box">
-                        <h4>Filter</h4>
-                        <div class="filter-list">
-                            <div class="filter-item"><i class="fas fa-clock"></i> Duration</div>
-                            <div class="filter-item"><i class="fas fa-map-marker-alt"></i> Location</div>
-                            <div class="filter-item"><i class="fas fa-tools"></i> Skills Needed</div>
-                            <div class="filter-item"><i class="fas fa-money-bill-wave"></i> Benefit</div>
-                            <div class="filter-item"><i class="fas fa-building"></i> Agency</div>
-                        </div>
-                        <button class="btn btn-filter">Apply Filter</button>
+                    <div class="col-12 col-md-4">
+                        <label for="search-location" class="visually-hidden">Lokasi</label>
+                        <input type="text" class="form-control form-control-lg" id="search-location" placeholder="Lokasi (mis. Jakarta)">
                     </div>
+                    <div class="col-12 col-md-3">
+                        <button type="submit" class="btn btn-primary btn-lg w-100">Cari</button>
+                    </div>
+                </form>
+            </section>
 
+            <section class="container mb-5">
+                <div class="row">
+                    <div class="col-md-4 col-lg-3">
+                        
+                        <div class="category-card">
+                            <h5>Category</h5>
+                            <div>
+                                <div class="category-item">
+                                    <i class="fas fa-leaf"></i> <span>Environment & Nature</span>
+                                </div>
+                                <div class="category-item">
+                                    <i class="fas fa-graduation-cap"></i> <span>Education & Mentoring</span>
+                                </div>
+                                <div class="category-item">
+                                    <i class="fas fa-hand-holding-heart"></i> <span>Social & Humanitarian</span>
+                                </div>
+                                <div class="category-item">
+                                    <i class="fas fa-palette"></i> <span>Arts, Culture & Creativity</span>
+                                </div>
+                                <div class="category-item">
+                                    <i class="fas fa-heartbeat"></i> <span>Health & Fitness</span>
+                                </div>
+                                <div class="category-item">
+                                    <i class="fas fa-laptop-code"></i> <span>Technology & Digital</span>
+                                </div>
+                                <div class="category-item">
+                                    <i class="fas fa-calendar-alt"></i> <span>Events & Festivals</span>
+                                </div>
+                            </div>
+                            <button class="btn btn-custom-green-filter">Apply Category</button>
+                        </div>
+
+                        <div class="filter-card">
+                            <h5>Filter</h5>
+                            <div>
+                                <div class="filter-item">
+                                    <i class="fas fa-clock"></i> <span>Duration</span>
+                                </div>
+                                <div class="filter-item">
+                                    <i class="fas fa-map-marker-alt"></i> <span>Location</span>
+                                </div>
+                                <div class="filter-item">
+                                    <i class="fas fa-tools"></i> <span>Skills Needed</span>
+                                </div>
+                                <div class="filter-item">
+                                    <i class="fas fa-dollar-sign"></i> <span>Benefit</span>
+                                </div>
+                                <div class="filter-item">
+                                    <i class="fas fa-building"></i> <span>Agency</span>
+                                </div>
+                            </div>
+                            <button class="btn btn-custom-green-filter">Apply Filter</button>
+                        </div>
+
+                    </div>
+                    <div class="col-md-8 col-lg-9">
+                        <h4 class="fw-bold custom-text-dark mb-4">Upcoming Volunteer Events</h4>
+                        <div class="row">
+                            
+                            <div class="col-md-6 col-lg-4">
+                                <div class="event-card">
+                                    <img src="https://images.unsplash.com/photo-1532629399429-ad65fa540047?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Beach Cleanup" class="card-img-top">
+                                    <div class="card-body">
+                                        <span class="badge badge-organization mb-2">Yayasan Lingkungan Asri</span>
+                                        <h5 class="card-title">Pembersihan Pantai Bersama</h5>
+                                        <p class="card-subtitle"><i class="far fa-calendar-alt"></i> 10 April 2025</p>
+                                        <p class="card-subtitle"><i class="fas fa-map-marker-alt"></i> Pantai Indah, Jakarta</p>
+                                        <a href="#" class="btn btn-outline-primary btn-sm w-100">Lihat Detail</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 col-lg-4">
+                                <div class="event-card">
+                                    <img src="https://images.unsplash.com/photo-1549247717-3bf791c6e1e1?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Teaching Children" class="card-img-top">
+                                    <div class="card-body">
+                                        <span class="badge badge-organization mb-2">Komunitas Peduli Anak</span>
+                                        <h5 class="card-title">Mengajar Anak-anak di Desa Pelosok</h5>
+                                        <p class="card-subtitle"><i class="far fa-calendar-alt"></i> 15 - 20 Mei 2025</p>
+                                        <p class="card-subtitle"><i class="fas fa-map-marker-alt"></i> Desa Sukamaju, Jawa Barat</p>
+                                        <a href="#" class="btn btn-outline-primary btn-sm w-100">Lihat Detail</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 col-lg-4">
+                                <div class="event-card">
+                                    <img src="https://images.unsplash.com/photo-1520692751505-1a8684d59a29?q=80&w=2832&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Blood Donation" class="card-img-top">
+                                    <div class="card-body">
+                                        <span class="badge badge-organization mb-2">PMI Kota Bandung</span>
+                                        <h5 class="card-title">Donor Darah Akbar</h5>
+                                        <p class="card-subtitle"><i class="far fa-calendar-alt"></i> 25 Juni 2025</p>
+                                        <p class="card-subtitle"><i class="fas fa-map-marker-alt"></i> Balai Kota Bandung</p>
+                                        <a href="#" class="btn btn-outline-primary btn-sm w-100">Lihat Detail</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 col-lg-4">
+                                <div class="event-card">
+                                    <img src="https://images.unsplash.com/photo-1547489569-42b4d4586d64?q=80&w=2803&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Coding Camp" class="card-img-top">
+                                    <div class="card-body">
+                                        <span class="badge badge-organization mb-2">Tech For Good</span>
+                                        <h5 class="card-title">Coding Camp untuk Remaja Kurang Mampu</h5>
+                                        <p class="card-subtitle"><i class="far fa-calendar-alt"></i> 1 - 7 Juli 2025</p>
+                                        <p class="card-subtitle"><i class="fas fa-map-marker-alt"></i> Pusat Komputer, Surabaya</p>
+                                        <a href="#" class="btn btn-outline-primary btn-sm w-100">Lihat Detail</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
-
-                <div class="col-lg-9">
-                    <h3 class="mb-4 fw-bold custom-text-dark">Trending This Week</h3>
-
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="card opportunity-card">
-                                <img src="https://picsum.photos/400/150?random=2" class="card-img-top" alt="Nanda Harmoni">
-                                <div class="card-body">
-                                    <h5 class="card-title">Nada Harmoni: Volunteer Festival Amal</h5>
-                                    <p class="card-text text-secondary" style="font-size: 0.9rem;">Membantu acara musik, fundraising dan persiapan logistik.</p>
-                                    <div class="card-meta">
-                                        <div class="meta-item"><i class="fas fa-music"></i> Art, Music, Fundraising</div>
-                                        <div class="meta-item"><i class="fas fa-map-marker-alt"></i> 3 Maps</div>
-                                    </div>
-                                    <div class="card-footer-action pt-2 border-top">
-                                        <span class="days-left">Deadline 2 Minggu</span>
-                                        <a href="detail.html" class="btn btn-detail">See details</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="card opportunity-card">
-                                <img src="https://picsum.photos/400/150?random=3" class="card-img-top" alt="Mentari Harapan">
-                                <div class="card-body">
-                                    <h5 class="card-title">Mentari Harapan: Kelas Inspirasi</h5>
-                                    <p class="card-text text-secondary" style="font-size: 0.9rem;">Memberikan mentoring dan motivasi pada siswa SD/SMP.</p>
-                                    <div class="card-meta">
-                                        <div class="meta-item"><i class="fas fa-graduation-cap"></i> Education & Mentoring</div>
-                                        <div class="meta-item"><i class="fas fa-calendar-alt"></i> 2 Weeks</div>
-                                    </div>
-                                    <div class="card-footer-action pt-2 border-top">
-                                        <span class="days-left">Deadline 3 Hari</span>
-                                        <a href="detail.html" class="btn btn-detail">See details</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="card opportunity-card">
-                                <img src="https://picsum.photos/400/150?random=4" class="card-img-top" alt="Bank Sampah">
-                                <div class="card-body">
-                                    <h5 class="card-title">Aksi Peduli Lingkungan: Bank Sampah</h5>
-                                    <p class="card-text text-secondary" style="font-size: 0.9rem;">Sosialisasi dan pengumpulan sampah organik dan anorganik.</p>
-                                    <div class="card-meta">
-                                        <div class="meta-item"><i class="fas fa-tree"></i> Env & Nature, Conservation</div>
-                                        <div class="meta-item"><i class="fas fa-clock"></i> 1 Day</div>
-                                    </div>
-                                    <div class="card-footer-action pt-2 border-top">
-                                        <span class="days-left">Deadline 1 Minggu</span>
-                                        <a href="detail.html" class="btn btn-detail">See details</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="card opportunity-card">
-                                <img src="https://picsum.photos/400/150?random=5" class="card-img-top" alt="Donasi Sesama">
-                                <div class="card-body">
-                                    <h5 class="card-title">Aksi Peduli Sesama: Donasi Sembako</h5>
-                                    <p class="card-text text-secondary" style="font-size: 0.9rem;">Membantu distribusi sembako kepada masyarakat yang membutuhkan.</p>
-                                    <div class="card-meta">
-                                        <div class="meta-item"><i class="fas fa-hand-holding-heart"></i> Social & Humanitarian</div>
-                                        <div class="meta-item"><i class="fas fa-calendar-alt"></i> 1 Week</div>
-                                    </div>
-                                    <div class="card-footer-action pt-2 border-top">
-                                        <span class="days-left">Deadline Besok</span>
-                                        <a href="detail.html" class="btn btn-detail">See details</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="text-center mt-4">
-                        <button class="btn btn-explore">Explore all opportunity</button>
-                    </div>
-
-                </div>
-            </div>
-
+            </section>
         </main>
 
         <footer class="text-white custom-footer-bg footer">
@@ -189,8 +472,9 @@
                 <div class="text-center copyright"><p class="mb-0">© 2025 Volunteer Hub. All rights reserved.</p></div>
             </div>
         </footer>
-
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+```http://googleusercontent.com/image_generation_content/1
