@@ -1,12 +1,15 @@
 /* Variabel Warna Brand Anda */
 :root {
-    --vh-green: #4CAF50; /* Hijau Utama (Aksi Primer) */
+    --vh-green: #4CAF50; /* Hijau Utama (Aksi Primer) - Tetap */
     --vh-dark-green: #0E5E4E; /* Hijau Gelap Logo/Ikon */
     --vh-dark-text: #333333;
     --vh-light-bg: #f5f5f5;
     --vh-secondary-text: #888888;
-    --vh-footer-bg-new: #53B6AE; /* Toska/Biru Muda baru untuk Footer */
-    --vh-border-radius-large: 20px;
+    --vh-footer-bg-new: #53B6AE; /* DIKOREKSI: Kembali ke warna toska gelap yang pertama */
+    --vh-toska-new: #20C997; /* Toska lama untuk filter/category */
+    
+    --vh-highlight-toska: #2CC8AA; /* WARNA BARU (#2CC8AA) UNTUK HEADER/AKSI AKTIF/DETAIL */
+    --vh-highlight-dark: #229980; /* Warna gelap untuk hover/focus */
 }
 
 /* Base & Reset */
@@ -42,17 +45,17 @@ body {
     text-decoration: underline;
 }
 
-/* Tombol Aksi Utama (Hijau) */
+/* Tombol Aksi Utama (Hijau) - DIGANTI KE TOSKA HIGHLIGHT */
 .custom-btn-green {
-    background-color: var(--vh-green) !important;
-    border-color: var(--vh-green) !important;
+    background-color: var(--vh-highlight-toska) !important;
+    border-color: var(--vh-highlight-toska) !important;
     font-weight: bold;
     padding: 12px;
     transition: background-color 0.3s;
 }
 .custom-btn-green:hover {
-    background-color: #388E3C !important;
-    border-color: #388E3C !important;
+    background-color: var(--vh-highlight-dark) !important;
+    border-color: var(--vh-highlight-dark) !important;
 }
 
 /* ===============================
@@ -65,17 +68,16 @@ body {
     border: none;
     padding: 8px 15px;
     font-weight: bold;
-    border-radius: 8px;
     color: var(--vh-dark-text);
     transition: background-color 0.2s, color 0.2s;
 }
 
 .nav-auth-btn.active-btn {
-    background-color: var(--vh-green);
+    background-color: var(--vh-highlight-toska);
     color: white;
 }
 .nav-auth-btn.active-btn:hover {
-    background-color: #388E3C;
+    background-color: var(--vh-highlight-dark);
 }
 
 /* Card Form */
@@ -201,8 +203,9 @@ body {
     text-align: center;
 }
 
+/* TOMBOL FILTER/CATEGORY (MENGGUNAKAN #2CC8AA + SHADOW) */
 .btn-category, .btn-filter {
-    background-color: var(--vh-green);
+    background-color: var(--vh-highlight-toska);
     color: white;
     font-weight: bold;
     border: none;
@@ -210,6 +213,14 @@ body {
     padding: 10px;
     width: 100%;
     margin-top: 15px;
+    /* Penambahan Shadow dan Hover */
+    transition: background-color 0.2s, box-shadow 0.2s ease-in-out;
+    box-shadow: 0 4px 8px rgba(44, 200, 170, 0.4); 
+}
+.btn-category:hover, .btn-filter:hover {
+    background-color: var(--vh-highlight-dark);
+    border-color: var(--vh-highlight-dark);
+    box-shadow: 0 6px 12px rgba(44, 200, 170, 0.5);
 }
 
 /* Card Kegiatan (Trending/Peluang) */
@@ -259,23 +270,38 @@ body {
     color: #E53935; 
 }
 
+/* TOMBOL SEE DETAILS (MENGGUNAKAN WARNA #2CC8AA) */
 .btn-detail {
-    background-color: #f0f0f0;
-    color: var(--vh-dark-text);
+    background-color: var(--vh-highlight-toska); /* Menggunakan #2CC8AA */
+    color: white !important;
     border-radius: 6px;
     font-size: 13px;
     padding: 6px 15px;
     transition: background-color 0.2s;
+    font-weight: bold;
+    border: none;
+}
+.btn-detail:hover {
+    background-color: var(--vh-highlight-dark); /* Darker version for hover */
+    color: white !important;
 }
 
+/* TOMBOL EXPLORE */
 .btn-explore {
-    background-color: var(--vh-green);
+    background-color: var(--vh-highlight-toska);
     color: white;
     font-weight: bold;
     border-radius: 8px;
     padding: 12px 30px;
     margin-top: 10px;
     margin-bottom: 30px;
+    transition: background-color 0.2s, box-shadow 0.2s ease-in-out;
+    box-shadow: 0 4px 8px rgba(44, 200, 170, 0.4); 
+    border: none;
+}
+.btn-explore:hover {
+    background-color: var(--vh-highlight-dark);
+    box-shadow: 0 6px 12px rgba(44, 200, 170, 0.5);
 }
 
 /* ===============================
@@ -583,13 +609,13 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #7966C7; /* Warna ungu untuk ikon lonceng */
+    color: var(--vh-highlight-toska); /* Warna lonceng */
     font-size: 1.2rem;
     transition: all 0.2s ease-in-out;
 }
 .notification-bell-icon:hover {
     background-color: #f0f0f0;
-    border-color: #ccc;
+    border-color: var(--vh-highlight-dark);
 }
 
 .notification-badge {
@@ -612,11 +638,11 @@ body {
 
 
 /* ===============================
-   FOOTER STYLES (Tosca Terbaru)
+   FOOTER STYLES (Toska Terbaru)
    =============================== */
 
 .custom-footer-bg {
-    background-color: var(--vh-footer-bg-new) !important;
+    background-color: var(--vh-footer-bg-new) !important; /* MENGGUNAKAN #53B6AE */
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     border-bottom-left-radius: var(--vh-border-radius-large);
