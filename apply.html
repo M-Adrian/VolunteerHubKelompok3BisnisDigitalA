@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply Now - VolunteerHub</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css"> 
+    
+    <style>
+        .apply-container {
+            max-width: 800px;
+            margin: auto;
+            padding: 30px 0;
+        }
+        .apply-card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            margin-bottom: 25px;
+            border: 1px solid #e0e0e0;
+        }
+        .upload-area {
+            background-color: #fcf8e3; /* Warna krem muda/kuning */
+            border: 2px dashed #e7e0c4;
+            border-radius: 8px;
+            padding: 40px;
+            text-align: center;
+            color: #8a6d3b;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .upload-area:hover {
+            background-color: #faebd7;
+        }
+        .upload-area input[type="file"] {
+            display: none;
+        }
+        .form-label {
+            font-weight: 500;
+        }
+        .form-control {
+            border-radius: 6px;
+        }
+        .custom-btn-apply-green {
+            background-color: #38a169;
+            color: white;
+            padding: 10px 40px;
+            font-size: 1.1rem;
+            border-radius: 8px;
+            transition: background-color 0.2s;
+            border: none;
+        }
+        .custom-btn-apply-green:hover {
+            background-color: #2e8555;
+            color: white;
+        }
+        .back-button {
+            background-color: #d1c4e9; /* Warna ungu muda */
+            color: #512da8; /* Warna ungu gelap */
+            border: none;
+            padding: 8px 15px;
+            border-radius: 8px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            transition: background-color 0.2s;
+        }
+        .back-button:hover {
+            background-color: #b39ddb;
+        }
+    </style>
+</head>
+<body class="bg-light custom-bg">
+
+    <div class="d-flex flex-column min-vh-100">
+
+        <div class="d-flex flex-column min-vh-100">
+
+        <header class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+            <div class="container-fluid mx-lg-5">
+                <a class="navbar-brand fw-bold fs-4 custom-logo-color me-4" href="home.html">VolunteerHub</a>
+                
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link text-secondary" href="home.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link active fw-bold custom-link" href="volunteer.html">Volunteer</a></li>
+                        <li class="nav-item"><a class="nav-link text-secondary" href="dashboard.html">Dashboard</a></li>
+                    </ul>
+                </div>
+
+                <div class="d-flex align-items-center">
+                    <span class="me-3 text-secondary">Hi, Bup!</span>
+                    <a href="notification.html" class="notification-bell-icon me-3">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge">3</span>
+                    </a>
+                    <a href="index.html" class="rounded-circle bg-secondary d-flex align-items-center justify-content-center" style="width: 40px; height: 40px; color: white;" title="Logout"><i class="fas fa-sign-out-alt"></i></a> 
+                </div>
+                </div>
+        </header>
+
+        <main class="flex-grow-1 container apply-container">
+            
+            <a href="detail.html" class="btn back-button"><i class="fas fa-chevron-left me-2"></i> Back</a>
+
+            <form>
+                
+                <div class="apply-card">
+                    <h3 class="fw-bold mb-4"><i class="fas fa-file-upload me-2"></i> Upload CV</h3>
+                    
+                    <label for="cv-upload" class="upload-area">
+                        <i class="fas fa-arrow-up-from-bracket fa-2x mb-2"></i>
+                        <p class="fw-bold mb-1">Drag or Drop your CV here</p>
+                        <p class="mb-0" style="font-size: 0.85rem;">Supported formats: pdf, docx, docs, ppt, jpg</p>
+                        <input type="file" id="cv-upload" accept=".pdf, .docx, .docs, .ppt, .jpg">
+                    </label>
+                </div>
+
+                <div class="apply-card">
+                    <h3 class="fw-bold mb-4"><i class="fas fa-user-circle me-2"></i> Personal Information</h3>
+                    
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label for="full-name" class="form-label">Full Name*</label>
+                            <input type="text" class="form-control" id="full-name" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="email" class="form-label">Email*</label>
+                            <input type="email" class="form-control" id="email" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="telephone" class="form-label">Telephone*</label>
+                            <input type="tel" class="form-control" id="telephone" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="university" class="form-label">University*</label>
+                            <input type="text" class="form-control" id="university" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="study-program" class="form-label">Study Program*</label>
+                            <input type="text" class="form-control" id="study-program" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="semester" class="form-label">Semester</label>
+                            <input type="number" class="form-control" id="semester">
+                        </div>
+                        <div class="col-md-12">
+                            <label for="gpa" class="form-label">GPA (Up-to-date)</label>
+                            <input type="text" class="form-control" id="gpa" placeholder="Contoh: 3.50">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="apply-card">
+                    <h3 class="fw-bold mb-4"><i class="fas fa-plus-circle me-2"></i> Additional</h3>
+                    
+                    <div class="mb-3">
+                        <label for="skills" class="form-label">Skills</label>
+                        <textarea class="form-control" id="skills" rows="3" placeholder="Contoh: Public Speaking, Editing Video, Marketing"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="relevant-experience" class="form-label">Relevant Experience</label>
+                        <textarea class="form-control" id="relevant-experience" rows="3" placeholder="Pengalaman yang relevan (misalnya: pernah jadi panitia event, ketua komunitas)"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="motivation" class="form-label">Motivation for applying</label>
+                        <textarea class="form-control" id="motivation" rows="4" required placeholder="Jelaskan alasan Anda ingin bergabung"></textarea>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-5">
+                    <button type="submit" class="btn custom-btn-apply-green">APPLY</button>
+                </div>
+            </form>
+
+        </main>
+
+        <footer class="text-white custom-footer-bg footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 mb-4 mb-md-0">
+                        <div class="footer-logo-container"><div class="footer-logo-icon">V</div><span class="footer-logo-text">VolunteerHub</span></div>
+                        <p class="footer-description">Platform penghubung mahasiswa dengan kesempatan volunteer dari penyelenggara (kampus, NGO, komunitas, maupun event).</p>
+                    </div>
+
+                    <div class="col-6 col-md-2 footer-link-group"><h6>Quick Links</h6><a href="home.html">Home</a><a href="volunteer.html">Volunteer</a><a href="dashboard.html">Dashboard</a><a href="notification.html">Notification</a></div>
+                    <div class="col-6 col-md-3 footer-link-group"><h6>Category</h6><a href="#">Environment & Nature</a><a href="#">Education & Mentoring</a><a href="#">Social & Humanitarian</a><a href="#">Arts, Culture & Creativity</a><a href="#">Health & Fitness</a><a href="#">Technology & Digital</a><a href="#">Events & Festivals</a></div>
+                    <div class="col-md-3 footer-link-group contact-info"><h6>Contact</h6><p>Fakultas Ekonomi UNJ</p><p>Jl. Rawamangun, Jakarta Timur</p><p>Email: <a href="mailto:volunteerhub@g.id">volunteerhub@g.id</a></p></div>
+                </div>
+                <div class="text-center copyright"><p class="mb-0">© 2025 Volunteer Hub. All rights reserved.</p></div>
+            </div>
+        </footer>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

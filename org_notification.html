@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notification Organization - All - VolunteerHub</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css"> 
+    
+    <style>
+        .org-notification-container {
+            max-width: 900px;
+            margin: auto;
+            padding: 30px 0;
+        }
+        .notif-tab-nav {
+            background-color: #E6E6E6; 
+            border-radius: 6px;
+            padding: 3px;
+            margin-bottom: 25px;
+            display: flex;
+            width: 250px;
+        }
+        .notif-tab-btn {
+            flex-grow: 1;
+            text-align: center;
+            padding: 8px 12px;
+            font-weight: bold;
+            color: #6c757d;
+            background: none;
+            border: none;
+            border-radius: 4px;
+            transition: all 0.2s;
+            position: relative;
+        }
+        .notif-tab-btn.active {
+            background-color: #FFC107; /* Kuning sesuai gambar */
+            color: var(--vh-dark-text); 
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .notif-item {
+            background-color: white;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            display: flex;
+            align-items: flex-start;
+            border: 1px solid #eee;
+        }
+        .notif-icon-wrapper {
+            font-size: 1.5rem;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 15px;
+            color: white;
+        }
+        .icon-users { background-color: #53B6AE; color: white; } /* Toska */
+        .icon-warning { background-color: #FFC107; color: var(--vh-dark-text); } /* Kuning */
+        .icon-check { background-color: #4CAF50; color: white; } /* Hijau */
+        .icon-platform { background-color: #90A4AE; color: white; } /* Abu-abu */
+
+        .notif-content h5 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--vh-dark-text);
+            margin-bottom: 3px;
+        }
+        .notif-content p {
+            font-size: 0.9rem;
+            color: #6c757d;
+            margin-bottom: 0;
+        }
+        
+        .btn-mark-as-read {
+            background-color: #d1c4e9; /* Ungu muda */
+            color: #512da8; /* Ungu gelap */
+            font-weight: 600;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 6px;
+            text-decoration: none;
+        }
+        
+        /* Tab Content Styling */
+        .notif-tab-content-item {
+            display: none;
+        }
+        .notif-tab-content-item.active {
+            display: block;
+        }
+    </style>
+</head>
+<body class="bg-light custom-bg">
+
+    <div class="d-flex flex-column min-vh-100">
+
+        <header class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+            <div class="container-fluid mx-lg-5">
+                <a class="navbar-brand fw-bold fs-4 custom-logo-color me-4" href="org_home.html">VolunteerHub</a>
+                
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link text-secondary" href="org_home.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-secondary" href="org_dashboard_main.html">Dashboard</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="d-flex align-items-center">
+                    <span class="me-3 text-secondary fw-bold fs-5" style="color: #9C27B0 !important;">Hi, Powerangers!</span>
+                    
+                    <a href="org_notification.html" class="notification-bell-icon me-3" style="background-color: #f0f0f0; border-color: #ccc;">
+                        <i class="fas fa-bell"></i>
+                    </a>
+                    
+                    <a href="org_login.html" class="rounded-circle d-flex align-items-center justify-content-center ms-2" 
+                       style="width: 40px; height: 40px; background-color: #EF5350; color: white; transition: background-color 0.2s;" 
+                       onmouseover="this.style.backgroundColor='#C62828'" 
+                       onmouseout="this.style.backgroundColor='#EF5350'" 
+                       title="Logout">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </a>
+                </div>
+            </div>
+        </header>
+        <main class="flex-grow-1 container org-notification-container">
+            
+            <h2 class="fw-bold custom-text-dark">Notification</h2>
+            <p class="text-secondary mb-4">View and manage notifications for your event.</p>
+
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <div class="notif-tab-nav" role="tablist">
+                    <button class="notif-tab-btn active" id="btn-all" data-target="all-content">
+                        All <span class="badge bg-secondary">6</span>
+                    </button>
+                    <button class="notif-tab-btn" id="btn-unread" data-target="unread-content">
+                        Unread <span class="badge bg-secondary">2</span>
+                    </button>
+                </div>
+                
+                <a href="#" class="btn-mark-as-read"><i class="fas fa-check-double me-1"></i> Mark all as read</a>
+            </div>
+
+            <div id="notif-content">
+                
+                <div class="notif-tab-content-item" id="unread-content">
+                    
+                    <div class="notif-item">
+                        <div class="notif-icon-wrapper icon-users"><i class="fas fa-users"></i></div>
+                        <div class="notif-content">
+                            <h5>New Volunteers Registered</h5>
+                            <p>5 new volunteers registered for the 'Beach Cleanup Social Service' event.</p>
+                        </div>
+                    </div>
+
+                    <div class="notif-item">
+                        <div class="notif-icon-wrapper icon-warning"><i class="fas fa-stopwatch"></i></div>
+                        <div class="notif-content">
+                            <h5>Event Will Begin Soon</h5>
+                            <p>The 'Teaching Village Children Program' event will begin in 2 days.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="notif-tab-content-item active" id="all-content">
+                    
+                    <div class="notif-item">
+                        <div class="notif-icon-wrapper icon-users"><i class="fas fa-users"></i></div>
+                        <div class="notif-content">
+                            <h5>New Volunteers Registered</h5>
+                            <p>5 new volunteers registered for the 'Beach Cleanup Social Service' event.</p>
+                        </div>
+                    </div>
+
+                    <div class="notif-item">
+                        <div class="notif-icon-wrapper icon-warning"><i class="fas fa-stopwatch"></i></div>
+                        <div class="notif-content">
+                            <h5>Event Will Begin Soon</h5>
+                            <p>The 'Teaching Village Children Program' event will begin in 2 days.</p>
+                        </div>
+                    </div>
+
+                    <div class="notif-item">
+                        <div class="notif-icon-wrapper icon-warning"><i class="fas fa-exclamation-triangle"></i></div>
+                        <div class="notif-content">
+                            <h5>Volunteer Quota Almost Full</h5>
+                            <p>There are only 7 volunteer slots left for the 'Beach Cleanup Social Service' event.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="notif-item">
+                        <div class="notif-icon-wrapper icon-platform"><i class="fas fa-info-circle"></i></div>
+                        <div class="notif-content">
+                            <h5>Platform Update</h5>
+                            <p>New event analytics features are now available on the dashboard.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="notif-item">
+                        <div class="notif-icon-wrapper icon-users"><i class="fas fa-users"></i></div>
+                        <div class="notif-content">
+                            <h5>New Volunteers Registered</h5>
+                            <p>3 new volunteers have registered for the 'Blood Donation Together' event.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="notif-item">
+                        <div class="notif-icon-wrapper icon-check"><i class="fas fa-check-circle"></i></div>
+                        <div class="notif-content">
+                            <h5>Event Completed</h5>
+                            <p>The 'Urban Tree Planting' event has been completed. View the full report.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
+        </main>
+
+        <footer class="text-white custom-footer-bg footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 mb-4 mb-md-0">
+                        <div class="footer-logo-container"><div class="footer-logo-icon">V</div><span class="footer-logo-text">VolunteerHub</span></div>
+                        <p class="footer-description">Platform penghubung mahasiswa dengan kesempatan volunteer dari penyelenggara (kampus, NGO, komunitas, maupun event).</p>
+                    </div>
+
+                    <div class="col-6 col-md-2 footer-link-group"><h6>Quick Links</h6><a href="org_home.html">Home</a><a href="org_dashboard_main.html">Dashboard</a><a href="org_notification.html">Notification</a></div>
+                    <div class="col-6 col-md-3 footer-link-group"><h6>Category</h6><a href="#">Environment & Nature</a><a href="#">Education & Mentoring</a><a href="#">Social & Humanitarian</a><a href="#">Arts, Culture & Creativity</a><a href="#">Health & Fitness</a><a href="#">Technology & Digital</a><a href="#">Events & Festivals</a></div>
+                    <div class="col-md-3 footer-link-group contact-info"><h6>Contact</h6><p>Fakultas Ekonomi UNJ</p><p>Jl. Rawamangun, Jakarta Timur</p><p>Email: <a href="mailto:volunteerhub@g.id">volunteerhub@g.id</a></p></div>
+                </div>
+                <div class="text-center copyright"><p class="mb-0">© 2025 Volunteer Hub. All rights reserved.</p></div>
+            </div>
+        </footer>
+        </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const tabs = document.querySelectorAll('.notif-tab-btn');
+            const contents = document.querySelectorAll('.notif-tab-content-item');
+
+            function showTab(targetId) {
+                // Hapus aktif dari semua tombol dan konten
+                tabs.forEach(t => t.classList.remove('active'));
+                contents.forEach(c => c.classList.remove('active'));
+                
+                // Aktifkan konten dan tombol yang sesuai
+                const targetContent = document.getElementById(targetId);
+                const targetButton = document.querySelector(`[data-target="${targetId}"]`);
+                
+                if (targetContent && targetButton) {
+                    targetContent.classList.add('active');
+                    targetButton.classList.add('active');
+                }
+            }
+            
+            // Inisialisasi: Tampilkan tab "All" secara default
+            showTab('all-content');
+
+            // Tambahkan event listener untuk mengganti tab
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const targetId = tab.getAttribute('data-target');
+                    showTab(targetId);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Organization - VolunteerHub</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    
+    <style>
+        /* Gaya Khusus Dashboard Organisasi */
+        .org-dashboard-header {
+            background-color: white;
+            padding: 20px 0;
+            margin-bottom: 20px;
+        }
+        .stat-card {
+            border: none;
+            border-radius: 12px;
+            padding: 25px;
+            text-align: left;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .stat-card .main-title {
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 5px;
+            color: var(--vh-dark-text);
+        }
+        .stat-card .main-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            line-height: 1;
+        }
+        .stat-card .sub-text {
+            font-size: 0.9rem;
+            color: #6c757d; 
+        }
+        
+        /* WARNA STAT CARD DISAMAKAN DENGAN GAMBAR */
+        .stat-card.total-event { background-color: #E4CCFF; } /* Ungu Muda/Mauve */
+        .stat-card.total-volunteer { background-color: #FFF59D; } /* Kuning Cerah */
+        .stat-card.event-active { background-color: #FFCCCC; } /* Pink Muda */
+        
+        .stat-card.total-event .main-value { color: #512da8; } /* Ungu Gelap */
+        .stat-card.total-volunteer .main-value { color: #C07200; } /* Coklat/Oranye Gelap */
+        .stat-card.event-active .main-value { color: #D04278; } /* Merah Muda Gelap */
+        
+        /* Gaya Daftar Acara (My Event) */
+        .my-event-card {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .event-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: var(--vh-dark-green);
+        }
+        .event-meta-item {
+            font-size: 0.9rem;
+            color: #6c757d;
+            margin-right: 20px;
+        }
+        .event-meta-item i {
+            color: #FFC107;
+            margin-right: 5px;
+        }
+        .event-status-tag {
+            font-weight: bold;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-right: 15px;
+        }
+        
+        /* WARNA TAG STATUS DISAMAKAN DENGAN GAMBAR */
+        .tag-active { background-color: #E4CCFF; color: #512da8; } 
+        .tag-completed { background-color: #CFD8DC; color: #546E7A; } 
+        .tag-open { background-color: #FFF3E0; color: #FF9800; } 
+
+        .btn-detail-org {
+            background-color: #d1c4e9; 
+            color: #512da8;
+            font-weight: 500;
+            font-size: 0.9rem;
+            border: none;
+            padding: 6px 15px;
+            border-radius: 6px;
+        }
+        .btn-detail-org:hover {
+            background-color: #b39ddb;
+        }
+        
+        .header-action-button {
+            background-color: #d1c4e9; 
+            color: #512da8;
+            font-size: 0.9rem;
+            font-weight: bold;
+            padding: 8px 15px;
+            border-radius: 6px;
+            transition: background-color 0.2s;
+            border: none;
+            text-decoration: none; /* Penting untuk tautan */
+        }
+    </style>
+</head>
+<body class="bg-light custom-bg">
+
+    <div class="d-flex flex-column min-vh-100">
+
+        <header class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+            <div class="container-fluid mx-lg-5">
+                <a class="navbar-brand fw-bold fs-4 custom-logo-color me-4" href="org_home.html">VolunteerHub</a>
+                
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link text-secondary" href="org_home.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-secondary" href="org_dashboard_main.html">Dashboard</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="d-flex align-items-center">
+                    <span class="me-3 text-secondary fw-bold fs-5" style="color: #9C27B0 !important;">Hi, Powerangers!</span>
+                    
+                    <a href="org_notification.html" class="notification-bell-icon me-3">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge">5</span>
+                    </a>
+                    
+                    <a href="org_login.html" class="rounded-circle d-flex align-items-center justify-content-center ms-2" 
+                    style="width: 40px; height: 40px; background-color: #EF5350; color: white; transition: background-color 0.2s;" 
+                    onmouseover="this.style.backgroundColor='#C62828'" 
+                    onmouseout="this.style.backgroundColor='#EF5350'" 
+                    title="Logout">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </a>
+                </div>
+            </div>
+        </header>
+        <main class="flex-grow-1 container py-4 main-content-area">
+            
+            <div class="d-flex justify-content-between align-items-center mb-4 org-dashboard-header" style="background: none; padding: 0;">
+                <div>
+                    <h2 class="fw-bold custom-text-dark">Dashboard</h2>
+                    <p class="text-secondary mb-0">Manage and monitor all your volunteer events.</p>
+                </div>
+                
+                <div class="d-flex align-items-center">
+                    <a href="org_event_completed.html" class="header-action-button btn me-2">
+                        <i class="fas fa-check-circle me-1"></i> Event Completed
+                    </a>
+                    <a href="org_create_event.html" class="header-action-button btn">
+                        <i class="fas fa-plus me-1"></i> Create Event
+                    </a>
+                </div>
+            </div>
+            
+            <div class="row g-4 mb-5">
+                <div class="col-md-4">
+                    <div class="stat-card total-event">
+                        <p class="main-title">Total Event</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h3 class="main-value">12</h3>
+                            <p class="sub-text fw-bold mb-0">+ 2 This month</p> 
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="stat-card total-volunteer">
+                        <p class="main-title">Total Volunteer</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h3 class="main-value">156</h3>
+                            <p class="sub-text fw-bold mb-0">+ 23 This month</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="stat-card event-active">
+                        <p class="main-title">Event Active</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h3 class="main-value">3</h3>
+                            <p class="sub-text fw-bold mb-0">On going</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <h3 class="fw-bold custom-text-dark mb-4">My Event</h3>
+
+            <div class="my-event-card">
+                <div class="event-details">
+                    <h5 class="event-title">Bakti Sosial Bersih Pantai</h5>
+                    <div class="d-flex flex-wrap mt-2">
+                        <span class="event-meta-item"><i class="fas fa-calendar-alt"></i> 11 Oct 2025</span>
+                        <span class="event-meta-item"><i class="fas fa-clock"></i> 09.00 - 12.00 WIB</span>
+                        <span class="event-meta-item"><i class="fas fa-map-marker-alt"></i> Pantai Ancol, Jakarta</span>
+                        <span class="event-meta-item"><i class="fas fa-users"></i> 24/30 volunteer</span>
+                    </div>
+                </div>
+                <div class="event-actions d-flex align-items-center">
+                    <span class="event-status-tag tag-active">Active</span>
+                    <a href="org_event_detail.html" class="btn btn-detail-org">Details</a>
+                </div>
+            </div>
+
+            <div class="my-event-card">
+                <div class="event-details">
+                    <h5 class="event-title">Program Mengajar Anak Desa</h5>
+                    <div class="d-flex flex-wrap mt-2">
+                        <span class="event-meta-item"><i class="fas fa-calendar-alt"></i> 18 Oct 2025</span>
+                        <span class="event-meta-item"><i class="fas fa-clock"></i> 09.00 - 15.00 WIB</span>
+                        <span class="event-meta-item"><i class="fas fa-map-marker-alt"></i> Desa Cibeureum, Bogor</span>
+                        <span class="event-meta-item"><i class="fas fa-users"></i> 15/20 volunteer</span>
+                    </div>
+                </div>
+                <div class="event-actions d-flex align-items-center">
+                    <span class="event-status-tag tag-active">Active</span>
+                    <a href="org_event_detail.html" class="btn btn-detail-org">Details</a>
+                </div>
+            </div>
+
+            <div class="my-event-card">
+                <div class="event-details">
+                    <h5 class="event-title">Donor Darah Bersama</h5>
+                    <div class="d-flex flex-wrap mt-2">
+                        <span class="event-meta-item"><i class="fas fa-calendar-alt"></i> 25 Nov 2025</span>
+                        <span class="event-meta-item"><i class="fas fa-clock"></i> 10.00 - 14.00 WIB</span>
+                        <span class="event-meta-item"><i class="fas fa-map-marker-alt"></i> RSU Mohammad Hatta, Bandung</span>
+                        <span class="event-meta-item"><i class="fas fa-users"></i> 8/50 volunteer</span>
+                    </div>
+                </div>
+                <div class="event-actions d-flex align-items-center">
+                    <span class="event-status-tag tag-open">Open</span>
+                    <a href="org_event_detail.html" class="btn btn-detail-org">Details</a>
+                </div>
+            </div>
+
+            <div class="my-event-card">
+                <div class="event-details">
+                    <h5 class="event-title">Penanaman Pohon Urban</h5>
+                    <div class="d-flex flex-wrap mt-2">
+                        <span class="event-meta-item"><i class="fas fa-calendar-alt"></i> 07 Sep 2025</span>
+                        <span class="event-meta-item"><i class="fas fa-clock"></i> 07.00 - 13.00 WIB</span>
+                        <span class="event-meta-item"><i class="fas fa-map-marker-alt"></i> Taman Kota, Jakarta</span>
+                        <span class="event-meta-item"><i class="fas fa-users"></i> 30/30 volunteer</span>
+                    </div>
+                </div>
+                <div class="event-actions d-flex align-items-center">
+                    <span class="event-status-tag tag-completed">Completed</span>
+                    <a href="org_event_detail.html" class="btn btn-detail-org">Details</a>
+                </div>
+            </div>
+            
+            <div class="text-center mt-4">
+                <a href="#" class="btn btn-outline-secondary">Load More Events</a>
+            </div>
+
+        </main>
+
+        <footer class="text-white custom-footer-bg footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 mb-4 mb-md-0">
+                        <div class="footer-logo-container"><div class="footer-logo-icon">V</div><span class="footer-logo-text">VolunteerHub</span></div>
+                        <p class="footer-description">Platform penghubung mahasiswa dengan kesempatan volunteer dari penyelenggara (kampus, NGO, komunitas, maupun event).</p>
+                    </div>
+
+                    <div class="col-6 col-md-2 footer-link-group"><h6>Quick Links</h6><a href="org_home.html">Home</a><a href="org_dashboard_main.html">Dashboard</a><a href="#">Manage Ops</a><a href="notification.html">Notification</a></div>
+                    <div class="col-6 col-md-3 footer-link-group"><h6>Category</h6><a href="#">Environment & Nature</a><a href="#">Education & Mentoring</a><a href="#">Social & Humanitarian</a><a href="#">Arts, Culture & Creativity</a><a href="#">Health & Fitness</a><a href="#">Technology & Digital</a><a href="#">Events & Festivals</a></div>
+                    <div class="col-md-3 footer-link-group contact-info"><h6>Contact</h6><p>Fakultas Ekonomi UNJ</p><p>Jl. Rawamangun, Jakarta Timur</p><p>Email: <a href="mailto:volunteerhub@g.id">volunteerhub@g.id</a></p></div>
+                </div>
+                <div class="text-center copyright"><p class="mb-0">© 2025 Volunteer Hub. All rights reserved.</p></div>
+            </div>
+        </footer>
+        </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,752 @@
+/* Variabel Warna Brand Anda */
+:root {
+    --vh-green: #4CAF50; /* Hijau Utama (Aksi Primer) */
+    --vh-dark-green: #0E5E4E; /* Hijau Gelap Logo/Ikon */
+    --vh-dark-text: #333333;
+    --vh-light-bg: #f5f5f5;
+    --vh-secondary-text: #888888;
+    --vh-footer-bg-new: #53B6AE; /* Toska/Biru Muda baru untuk Footer */
+    --vh-border-radius-large: 20px;
+}
+
+/* Base & Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Penyesuaian Latar Belakang & Teks Dasar */
+.custom-bg {
+    background-color: var(--vh-light-bg) !important;
+}
+
+/* Logo, Tautan, dan Judul */
+.custom-logo-color {
+    color: var(--vh-dark-green) !important;
+}
+.custom-text-dark {
+    color: var(--vh-dark-text) !important;
+}
+.custom-link {
+    color: var(--vh-green) !important;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out; 
+}
+.custom-link:hover {
+    color: #388E3C !important;
+    text-decoration: underline;
+}
+
+/* Tombol Aksi Utama (Hijau) */
+.custom-btn-green {
+    background-color: var(--vh-green) !important;
+    border-color: var(--vh-green) !important;
+    font-weight: bold;
+    padding: 12px;
+    transition: background-color 0.3s;
+}
+.custom-btn-green:hover {
+    background-color: #388E3C !important;
+    border-color: #388E3C !important;
+}
+
+/* ===============================
+   AUTH PAGES STYLES (index.html)
+   =============================== */
+
+/* Header Navigasi */
+.nav-auth-btn {
+    background: none;
+    border: none;
+    padding: 8px 15px;
+    font-weight: bold;
+    border-radius: 8px;
+    color: var(--vh-dark-text);
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.nav-auth-btn.active-btn {
+    background-color: var(--vh-green);
+    color: white;
+}
+.nav-auth-btn.active-btn:hover {
+    background-color: #388E3C;
+}
+
+/* Card Form */
+.auth-card {
+    text-align: center;
+}
+
+/* Input Group */
+.input-group-text {
+    background-color: white;
+}
+
+/* Pembagi Sosial Login */
+.divider {
+    text-align: center;
+    line-height: 0.1em;
+    border-bottom: 1px solid #ddd;
+    margin: 20px 0;
+}
+
+.divider span {
+    background: white;
+    padding: 0 10px;
+    color: #888;
+    font-size: 14px;
+}
+
+/* Tombol Sosial Login Kustom */
+.btn-social-google {
+    color: #DB4437; /* Merah Google */
+    border-color: #DB4437;
+}
+.btn-social-linkedin {
+    color: #0E76A8; /* Biru LinkedIn */
+    border-color: #0E76A8;
+}
+
+/* ===============================
+   HOMEPAGE, VOLUNTEER & DETAIL STYLES
+   =============================== */
+
+/* Jumbotron/Banner Utama (Hero Home & Volunteer) */
+.hero-banner {
+    background-color: white;
+    border-radius: 12px;
+    padding: 30px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.hero-text h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--vh-dark-green);
+    line-height: 1.1;
+    margin-bottom: 10px;
+}
+
+.hero-text .date i {
+    color: var(--vh-green);
+    margin-right: 8px;
+}
+
+.hero-image {
+    border-radius: 8px;
+    max-width: 50%;
+    height: auto;
+}
+
+/* Modifikasi Hero Banner Khusus Halaman Volunteer */
+.custom-volunteer-hero {
+    background-color: white !important; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    align-items: center; 
+}
+
+.custom-volunteer-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--vh-dark-text);
+}
+
+.custom-volunteer-hero .input-group .form-control-lg {
+    padding: 12px;
+}
+
+.custom-volunteer-hero .input-group .btn {
+    padding: 12px 20px;
+    font-size: 1rem;
+}
+
+/* Sidebar (Category & Filter - Hanya di Home) */
+.sidebar-box {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    margin-bottom: 25px;
+}
+
+.category-item, .filter-item {
+    display: flex;
+    align-items: center;
+    padding: 8px 0;
+    font-size: 15px;
+    cursor: pointer;
+    transition: color 0.2s;
+    color: var(--vh-dark-text);
+}
+.category-item:hover, .filter-item:hover {
+    color: var(--vh-green);
+}
+
+.category-item i, .filter-item i {
+    color: var(--vh-dark-green);
+    font-size: 18px;
+    width: 30px;
+    text-align: center;
+}
+
+.btn-category, .btn-filter {
+    background-color: var(--vh-green);
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    padding: 10px;
+    width: 100%;
+    margin-top: 15px;
+}
+
+/* Card Kegiatan (Trending/Peluang) */
+.opportunity-card {
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    margin-bottom: 25px;
+    transition: transform 0.2s;
+}
+.opportunity-card:hover {
+    transform: translateY(-3px);
+}
+
+.card-img-top {
+    height: 150px;
+    object-fit: cover;
+}
+
+.card-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px; 
+    margin-bottom: 15px;
+}
+
+.meta-item {
+    font-size: 12px;
+    color: #888;
+    background-color: var(--vh-light-bg);
+    border-radius: 4px;
+    padding: 3px 8px;
+    display: flex;
+    align-items: center;
+}
+
+.meta-item i {
+    margin-right: 5px;
+    color: var(--vh-green);
+}
+
+.card-footer-action .days-left {
+    font-size: 14px;
+    font-weight: bold;
+    color: #E53935; 
+}
+
+.btn-detail {
+    background-color: #f0f0f0;
+    color: var(--vh-dark-text);
+    border-radius: 6px;
+    font-size: 13px;
+    padding: 6px 15px;
+    transition: background-color 0.2s;
+}
+
+.btn-explore {
+    background-color: var(--vh-green);
+    color: white;
+    font-weight: bold;
+    border-radius: 8px;
+    padding: 12px 30px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+/* ===============================
+   DASHBOARD PAGE STYLES (dashboard.html)
+   =============================== */
+
+/* Hero Dashboard */
+.custom-dashboard-hero {
+    background-color: var(--vh-light-bg) !important; 
+    padding: 40px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.custom-dash-image {
+    max-width: 45%;
+    height: auto;
+}
+
+.custom-dashboard-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--vh-dark-green);
+    line-height: 1.1;
+}
+
+/* Total Hours Card */
+.custom-hours-card {
+    background: none; 
+    color: var(--vh-dark-text);
+    padding: 0;
+    border-radius: 0;
+    max-width: none;
+    display: flex;
+    flex-direction: column; 
+    align-items: flex-end;
+    box-shadow: none;
+    position: relative; 
+    
+    position: absolute;
+    right: 40px; 
+    top: 50%;
+    transform: translateY(-50%);
+    width: 200px;
+}
+.custom-hours-card .hours-content {
+    background-color: #7966C7; 
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 0 6px 15px rgba(121, 102, 199, 0.4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+.custom-hours-card .hours-content i {
+    align-self: center;
+    margin-right: 0;
+    margin-bottom: 5px;
+}
+.custom-hours-card .hours-content span {
+    font-size: 1.8rem;
+    line-height: 1.1;
+}
+
+.custom-hours-card p {
+    font-size: 0.8rem;
+    color: white;
+    margin-top: 5px;
+}
+
+/* Sidebar Navigasi Dashboard (Tombol Menu Kiri) */
+.dashboard-nav-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.dashboard-nav-btn {
+    width: 100%;
+    text-align: left;
+    padding: 15px 25px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: var(--vh-dark-text);
+    background-color: white;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.dashboard-nav-btn i {
+    margin-right: 15px;
+    font-size: 1.2rem;
+}
+
+/* WARA TOMBOL DASHBOARD BARU (DETAIL SESUAI FOTO) */
+
+/* Tombol 1: Upcoming Activities (Kuning/Oranye) */
+.dash-btn-upcoming {
+    background-color: #FFC107; 
+    color: var(--vh-dark-text);
+    box-shadow: 0 6px 15px rgba(255, 193, 7, 0.4);
+}
+.dash-btn-upcoming i {
+    color: var(--vh-dark-text); 
+}
+
+/* Tombol 2: Certificates Available (Biru Muda) */
+.dash-btn-certs {
+    background-color: #81D4FA; 
+    color: var(--vh-dark-text);
+    box-shadow: 0 6px 15px rgba(129, 212, 250, 0.4);
+}
+.dash-btn-certs i {
+    color: var(--vh-dark-text);
+}
+
+/* Tombol 3: Volunteer History (Abu-abu Tua) */
+.dash-btn-history {
+    background-color: #90A4AE; 
+    color: white;
+    box-shadow: 0 6px 15px rgba(144, 164, 174, 0.4);
+}
+.dash-btn-history i {
+    color: white;
+}
+
+/* Tombol yang Aktif */
+.dashboard-nav-btn.active-dash-btn {
+    background-color: #FFC107; 
+    box-shadow: 0 6px 15px rgba(255, 193, 7, 0.4);
+    color: var(--vh-dark-text);
+}
+.dashboard-nav-btn.active-dash-btn i {
+    color: var(--vh-dark-text);
+}
+
+/* Certificates Available Card Styles */
+.custom-btn-download {
+    background-color: #4CB5AA; 
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 15px;
+    font-size: 14px;
+    transition: background-color 0.2s;
+}
+.custom-btn-download:hover {
+    background-color: #3C9A90;
+    color: white;
+}
+
+.certificate-tag-group .tag-item {
+    background-color: #f0f0f0; 
+    color: var(--vh-dark-text);
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.location-duration span {
+    font-size: 14px;
+    color: var(--vh-dark-text);
+}
+
+.certificate-card {
+    position: relative;
+}
+
+.certificate-star {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: gold; 
+    font-size: 24px;
+    text-shadow: 0 0 5px rgba(0,0,0,0.2);
+    z-index: 10;
+}
+
+/* ===============================
+   DETAIL PAGE STYLES (detail.html)
+   =============================== */
+
+.detail-page-wrapper {
+    background-color: white;
+}
+
+/* Banner dan Bintang */
+.detail-banner-container {
+    position: relative;
+    max-height: 400px;
+    overflow: hidden;
+}
+.detail-banner-img {
+    width: 100%;
+    object-fit: cover;
+    height: 100%;
+}
+.detail-star {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    color: gold; 
+    font-size: 36px;
+    text-shadow: 0 0 8px rgba(0,0,0,0.5);
+    z-index: 10;
+}
+
+/* Judul dan Tag */
+.detail-tag {
+    font-size: 1rem;
+    color: var(--vh-secondary-text);
+    background-color: var(--vh-light-bg);
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.custom-btn-apply {
+    background-color: var(--vh-green) !important;
+    border-color: var(--vh-green) !important;
+    font-weight: bold;
+    padding: 10px 25px;
+    transition: background-color 0.2s;
+}
+
+/* Metrics Icons Section */
+.detail-metrics .metric-box {
+    padding: 15px 10px;
+    background-color: var(--vh-light-bg);
+    border-radius: 8px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.detail-metrics .metric-box i {
+    color: var(--vh-dark-green);
+    margin-bottom: 5px;
+}
+.detail-metrics .metric-box p {
+    font-size: 0.8rem;
+    margin-bottom: 0;
+    font-weight: 500;
+}
+
+/* Tabs Navigation */
+.detail-tabs .nav-link {
+    color: var(--vh-dark-text);
+    background-color: transparent;
+    border-radius: 0;
+    border-bottom: 3px solid transparent;
+    margin-right: 15px;
+    font-weight: bold;
+    padding: 8px 15px;
+    transition: all 0.2s;
+}
+
+.detail-tabs .nav-link.active {
+    color: var(--vh-green);
+    border-bottom: 3px solid var(--vh-green);
+    background-color: transparent;
+}
+
+/* Isi Konten Tabs */
+.detail-tab-content {
+    background-color: var(--vh-light-bg);
+    border-radius: 8px;
+    min-height: 250px;
+}
+.detail-tab-content p {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* Review Box */
+.review-box {
+    background-color: var(--vh-light-bg);
+    border: 1px solid #ddd;
+    min-height: 250px;
+}
+.review-box img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+}
+
+/* ===============================
+   NOTIFICATION BELL STYLES (New)
+   =============================== */
+.notification-bell-icon {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: white; /* Latar belakang putih */
+    border: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #7966C7; /* Warna ungu untuk ikon lonceng */
+    font-size: 1.2rem;
+    transition: all 0.2s ease-in-out;
+}
+.notification-bell-icon:hover {
+    background-color: #f0f0f0;
+    border-color: #ccc;
+}
+
+.notification-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: #EF5350; /* Merah untuk badge */
+    color: white;
+    font-size: 0.7rem;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 50%;
+    min-width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+
+/* ===============================
+   FOOTER STYLES (Tosca Terbaru)
+   =============================== */
+
+.custom-footer-bg {
+    background-color: var(--vh-footer-bg-new) !important;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: var(--vh-border-radius-large);
+    border-bottom-right-radius: var(--vh-border-radius-large);
+    padding-top: 50px; 
+    padding-bottom: 20px; 
+}
+
+.footer {
+    color: white;
+    margin-top: 40px; 
+}
+
+.footer-logo-container {
+    display: flex;
+    align-items: center; 
+    margin-bottom: 20px;
+}
+
+.footer-logo-icon {
+    width: 40px;
+    height: 40px;
+    background-color: white;
+    border-radius: 8px;
+    margin-right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    color: var(--vh-green);
+    font-weight: bold;
+}
+
+.footer-logo-text {
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    margin-left: 5px;
+}
+
+.footer-description {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #f0f0f0; 
+}
+
+.footer-link-group h6 {
+    color: white;
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+}
+
+.footer-link-group a {
+    color: #f0f0f0; 
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.footer-link-group a:hover {
+    color: var(--vh-dark-green);
+}
+
+.contact-info p {
+    color: #f0f0f0;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+.contact-info a {
+    color: #f0f0f0;
+    text-decoration: none;
+}
+
+.footer .copyright {
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    padding-top: 20px;
+    margin-top: 30px;
+    font-size: 13px;
+    color: #f0f0f0;
+}
+
+/* Media Queries */
+@media (max-width: 992px) {
+    .hero-banner {
+        flex-direction: column;
+        text-align: center;
+    }
+    .hero-image {
+        max-width: 100%;
+        margin-bottom: 20px;
+    }
+    .hero-text h1 {
+        font-size: 2.5rem;
+    }
+    
+    /* Perbaikan Mobile Dashboard */
+    .custom-dashboard-hero {
+        flex-direction: column; 
+        text-align: center;
+        align-items: center;
+    }
+    .hero-text {
+        order: -1;
+        padding: 0 !important;
+    }
+    .custom-hours-card {
+        position: static;
+        transform: none;
+        margin: 20px auto 0;
+    }
+    .dashboard-nav-group {
+        flex-direction: row; 
+        overflow-x: auto; 
+        padding-bottom: 10px;
+        margin-bottom: 25px;
+        justify-content: space-between;
+    }
+    .dashboard-nav-btn {
+        min-width: 30%;
+        flex-shrink: 0;
+        margin-right: 10px;
+    }
+}
+@media (max-width: 768px) {
+    .footer .row > div {
+        margin-bottom: 20px;
+    }
+    .detail-metrics .metric-box p {
+        font-size: 0.7rem;
+    }
+}

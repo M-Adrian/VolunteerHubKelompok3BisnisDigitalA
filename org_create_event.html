@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Organization - Create Event</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    
+    <style>
+        .create-event-container {
+            max-width: 900px; /* Lebar sesuai gambar */
+            margin: auto;
+            padding: 30px 0;
+        }
+        .event-card-section {
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            margin-bottom: 25px;
+            border: 1px solid #e0e0e0; /* Border tipis seperti gambar */
+        }
+        /* AREA UPLOAD FOTO DISESUAIKAN DENGAN GAMBAR */
+        .upload-photo-area {
+            background-color: #f7f7f7; /* Abu-abu muda konsisten dengan gambar */
+            border: 2px dashed #d0d0d0; /* Border abu-abu dashed */
+            border-radius: 8px;
+            padding: 40px;
+            text-align: center;
+            color: #6c757d; /* Warna teks abu-abu */
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .upload-photo-area input[type="file"] {
+            display: none;
+        }
+        .upload-photo-area:hover {
+            background-color: #e9e9e9;
+        }
+        .form-control-lg {
+            height: 45px;
+            border-radius: 8px; /* Sudut sedikit membulat */
+            border: 1px solid #ced4da; /* Border standar */
+        }
+        .form-control[rows="3"], .form-control[rows="6"] {
+            min-height: auto;
+            border-radius: 8px;
+        }
+        .action-buttons button, .action-buttons a {
+            font-weight: bold;
+            padding: 10px 30px;
+            border-radius: 8px;
+            margin: 0 10px;
+            text-decoration: none; /* Untuk tautan */
+            display: inline-block; /* Untuk tautan */
+        }
+        .btn-save-draft {
+            background-color: #90A4AE; /* Abu-abu */
+            color: white;
+            border: none;
+        }
+        .btn-post {
+            background-color: var(--vh-green) !important; /* Hijau */
+            color: white;
+            border: none;
+        }
+        .btn-discard {
+            background: none;
+            color: #EF5350; /* Merah */
+            font-weight: bold;
+            margin-top: 20px;
+            border: none;
+        }
+
+        /* Penyesuaian teks "Create Event" di header navigasi agar konsisten */
+        .navbar-nav .nav-item .nav-link.active.fw-bold {
+            color: #512da8 !important; /* Warna ungu seperti di gambar */
+        }
+        .navbar-nav .nav-item .nav-link.active.fw-bold::after {
+            background-color: #512da8 !important; /* Garis bawah ungu */
+        }
+    </style>
+</head>
+<body class="bg-light custom-bg">
+
+    <div class="d-flex flex-column min-vh-100">
+
+    <header class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+            <div class="container-fluid mx-lg-5">
+                <a class="navbar-brand fw-bold fs-4 custom-logo-color me-4" href="org_home.html">VolunteerHub</a>
+                
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link text-secondary" href="org_home.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-secondary" href="org_dashboard_main.html">Dashboard</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="d-flex align-items-center">
+                    <span class="me-3 text-secondary fw-bold fs-5" style="color: #9C27B0 !important;">Hi, Powerangers!</span>
+                    
+                    <a href="org_notification.html" class="notification-bell-icon me-3">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge">5</span>
+                    </a>
+                    
+                    <a href="org_login.html" class="rounded-circle d-flex align-items-center justify-content-center ms-2" 
+                    style="width: 40px; height: 40px; background-color: #EF5350; color: white; transition: background-color 0.2s;" 
+                    onmouseover="this.style.backgroundColor='#C62828'" 
+                    onmouseout="this.style.backgroundColor='#EF5350'" 
+                    title="Logout">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </a>
+                </div>
+            </div>
+        </header>
+        <main class="flex-grow-1 container create-event-container">
+            
+            <h2 class="fw-bold custom-text-dark">Create Event</h2>
+            <p class="text-secondary mb-4">Create your new event</p>
+
+            <form>
+                
+                <div class="event-card-section">
+                    <h4 class="fw-bold mb-4">Event Detail</h4>
+                    
+                    <div class="mb-3">
+                        <label for="event-name" class="form-label visually-hidden">Event Name</label>
+                        <input type="text" class="form-control form-control-lg" id="event-name" placeholder="Event Name">
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="tag" class="form-label visually-hidden">Tag</label>
+                        <input type="text" class="form-control form-control-lg" id="tag" placeholder="Tag">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="location" class="form-label visually-hidden">Location</label>
+                        <input type="text" class="form-control form-control-lg" id="location" placeholder="Location">
+                    </div>
+                    
+                    <div class="row mb-3 g-3">
+                        <div class="col-md-6">
+                            <label for="event-date" class="form-label visually-hidden">Event Date</label>
+                            <input type="date" class="form-control form-control-lg" id="event-date" placeholder="Event Date">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="event-time" class="form-label visually-hidden">Event Time</label>
+                            <input type="time" class="form-control form-control-lg" id="event-time" placeholder="Event Time">
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="registration-deadline" class="form-label visually-hidden">Registration Deadline</label>
+                        <input type="date" class="form-control form-control-lg" id="registration-deadline" placeholder="Registration Deadline">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="volunteer-needed" class="form-label visually-hidden">Volunteer Needed</label>
+                        <input type="number" class="form-control form-control-lg" id="volunteer-needed" placeholder="Volunteer Needed (Number)">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="description" class="form-label visually-hidden">Description</label>
+                        <textarea class="form-control" id="description" rows="3" placeholder="Description"></textarea>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="qualification" class="form-label visually-hidden">Qualification</label>
+                        <textarea class="form-control" id="qualification" rows="3" placeholder="Qualification"></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="benefit" class="form-label visually-hidden">Benefit</label>
+                        <textarea class="form-control" id="benefit" rows="3" placeholder="Benefit"></textarea>
+                    </div>
+                </div>
+
+                <div class="event-card-section">
+                    <h4 class="fw-bold mb-4">Upload Photo <small class="text-secondary" style="font-size: 0.9rem;">(Optional)</small></h4>
+                    
+                    <label for="photo-upload" class="upload-photo-area">
+                        <i class="fas fa-camera fa-2x mb-2"></i>
+                        <p class="fw-bold mb-1">Drag or Drop your photo here</p>
+                        <p class="mb-0" style="font-size: 0.85rem;">Max 10MB (JPEG, PNG, JPG)</p>
+                        <input type="file" id="photo-upload" accept=".jpeg, .png, .jpg">
+                    </label>
+                </div>
+
+                <div class="text-center action-buttons mt-5">
+                    <button type="button" class="btn btn-save-draft">Save Draft</button>
+                    <button type="submit" class="btn btn-post">Post</button>
+                    <button type="button" class="btn btn-discard">Discard</button>
+                </div>
+            </form>
+
+        </main>
+
+        <footer class="text-white custom-footer-bg footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 mb-4 mb-md-0">
+                        <div class="footer-logo-container"><div class="footer-logo-icon">V</div><span class="footer-logo-text">VolunteerHub</span></div>
+                        <p class="footer-description">Platform penghubung mahasiswa dengan kesempatan volunteer dari penyelenggara (kampus, NGO, komunitas, maupun event).</p>
+                    </div>
+
+                    <div class="col-6 col-md-2 footer-link-group"><h6>Quick Links</h6><a href="org_home.html">Home</a><a href="org_dashboard_main.html">Dashboard</a><a href="#">Manage Ops</a><a href="notification.html">Notification</a></div>
+                    <div class="col-6 col-md-3 footer-link-group"><h6>Category</h6><a href="#">Environment & Nature</a><a href="#">Education & Mentoring</a><a href="#">Social & Humanitarian</a><a href="#">Arts, Culture & Creativity</a><a href="#">Health & Fitness</a><a href="#">Technology & Digital</a><a href="#">Events & Festivals</a></div>
+                    <div class="col-md-3 footer-link-group contact-info"><h6>Contact</h6><p>Fakultas Ekonomi UNJ</p><p>Jl. Rawamangun, Jakarta Timur</p><p>Email: <a href="mailto:volunteerhub@g.id">volunteerhub@g.id</a></p></div>
+                </div>
+                <div class="text-center copyright"><p class="mb-0">© 2025 Volunteer Hub. All rights reserved.</p></div>
+            </div>
+        </footer>
+        </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+```http://googleusercontent.com/image_generation_content/0

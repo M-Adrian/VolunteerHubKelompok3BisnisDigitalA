@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Organization - Event Completed - VolunteerHub</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    
+    <style>
+        .completed-container {
+            max-width: 900px;
+            margin: auto;
+            padding: 30px 0;
+        }
+        .completed-event-card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border: 1px solid #eee;
+            position: relative;
+        }
+        .completed-event-card h4 {
+            font-weight: bold;
+            color: var(--vh-dark-text);
+            margin-bottom: 10px;
+        }
+        .completed-tag {
+            background-color: #CFD8DC; /* Abu-abu terang */
+            color: #546E7A; /* Abu-abu gelap */
+            font-weight: bold;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            display: inline-block;
+            margin-left: 10px;
+        }
+        .event-meta-list {
+            list-style: none;
+            padding: 0;
+            margin: 15px 0 0 0;
+        }
+        .event-meta-list li {
+            margin-bottom: 5px;
+            font-size: 0.95rem;
+            color: #6c757d;
+        }
+        .event-meta-list li i {
+            width: 25px;
+            color: var(--vh-dark-green);
+        }
+        .event-meta-list li:last-child {
+            font-weight: bold;
+            color: #512da8; /* Ungu gelap */
+        }
+        .action-buttons-group {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .btn-download-reports {
+            background-color: #eee;
+            color: var(--vh-dark-text);
+            font-size: 0.9rem;
+            font-weight: 600;
+            padding: 8px 15px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            text-decoration: none; /* Untuk tautan */
+        }
+        .btn-manage-cert {
+            background-color: #d1c4e9; /* Ungu muda */
+            color: #512da8; /* Ungu gelap */
+            font-size: 0.9rem;
+            font-weight: 600;
+            padding: 8px 15px;
+            border-radius: 6px;
+            text-decoration: none; /* Untuk tautan */
+        }
+        
+    </style>
+</head>
+<body class="bg-light custom-bg">
+
+    <div class="d-flex flex-column min-vh-100">
+
+        <header class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+            <div class="container-fluid mx-lg-5">
+                <a class="navbar-brand fw-bold fs-4 custom-logo-color me-4" href="org_home.html">VolunteerHub</a>
+                
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link text-secondary" href="org_home.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active fw-bold custom-link" href="org_dashboard_main.html">Dashboard</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="d-flex align-items-center">
+                    <span class="me-3 text-secondary fw-bold fs-5" style="color: #9C27B0 !important;">Hi, Powerangers!</span>
+                    
+                    <a href="notification.html" class="notification-bell-icon me-3">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge">5</span>
+                    </a>
+                    
+                    <a href="org_login.html" class="rounded-circle d-flex align-items-center justify-content-center ms-2" 
+                       style="width: 40px; height: 40px; background-color: #EF5350; color: white; transition: background-color 0.2s;" 
+                       onmouseover="this.style.backgroundColor='#C62828'" 
+                       onmouseout="this.style.backgroundColor='#EF5350'" 
+                       title="Logout">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </a>
+                </div>
+            </div>
+        </header>
+        <main class="flex-grow-1 container completed-container">
+            
+            <h2 class="fw-bold custom-text-dark">Event Completed</h2>
+            <p class="text-secondary mb-4">Manage certificates and documentation for completed events</p>
+            
+            <div class="completed-event-card">
+                <h4 class="d-inline-block">Donor Darah Bersama</h4>
+                <span class="completed-tag">Completed</span>
+
+                <ul class="event-meta-list">
+                    <li><i class="far fa-calendar-alt"></i> 27 Sep 2025</li>
+                    <li><i class="far fa-clock"></i> 10.00 - 14.00 WIB</li>
+                    <li><i class="fas fa-map-marker-alt"></i> GOR Soemantri, Bandung</li>
+                    <li><i class="fas fa-users"></i> 45/45 Volunteer</li>
+                    <li><i class="fas fa-certificate"></i> 43 Certificates Issued</li>
+                </ul>
+
+                <div class="action-buttons-group">
+                    <button class="btn btn-download-reports"><i class="fas fa-download me-1"></i> Download Reports</button>
+                    <a href="org_manage_certif.html" class="btn btn-manage-cert"><i class="fas fa-envelope me-1"></i> Manage Certificate</a>
+                </div>
+            </div>
+
+            <div class="completed-event-card">
+                <h4 class="d-inline-block">Penanaman Pohon Urban</h4>
+                <span class="completed-tag">Completed</span>
+
+                <ul class="event-meta-list">
+                    <li><i class="far fa-calendar-alt"></i> 07 Sep 2025</li>
+                    <li><i class="far fa-clock"></i> 07.00 - 13.00 WIB</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Taman Kota, Jakarta</li>
+                    <li><i class="fas fa-users"></i> 30/30 Volunteer</li>
+                    <li><i class="fas fa-certificate"></i> 28 Certificates Issued</li>
+                </ul>
+
+                <div class="action-buttons-group">
+                    <button class="btn btn-download-reports"><i class="fas fa-download me-1"></i> Download Reports</button>
+                    <a href="org_manage_certif.html" class="btn btn-manage-cert"><i class="fas fa-envelope me-1"></i> Manage Certificate</a>
+                </div>
+            </div>
+
+        </main>
+
+        <footer class="text-white custom-footer-bg footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 mb-4 mb-md-0">
+                        <div class="footer-logo-container"><div class="footer-logo-icon">V</div><span class="footer-logo-text">VolunteerHub</span></div>
+                        <p class="footer-description">Platform penghubung mahasiswa dengan kesempatan volunteer dari penyelenggara (kampus, NGO, komunitas, maupun event).</p>
+                    </div>
+
+                    <div class="col-6 col-md-2 footer-link-group"><h6>Quick Links</h6><a href="org_home.html">Home</a><a href="org_dashboard_main.html">Dashboard</a><a href="#">Manage Ops</a><a href="notification.html">Notification</a></div>
+                    <div class="col-6 col-md-3 footer-link-group"><h6>Category</h6><a href="#">Environment & Nature</a><a href="#">Education & Mentoring</a><a href="#">Social & Humanitarian</a><a href="#">Arts, Culture & Creativity</a><a href="#">Health & Fitness</a><a href="#">Technology & Digital</a><a href="#">Events & Festivals</a></div>
+                    <div class="col-md-3 footer-link-group contact-info"><h6>Contact</h6><p>Fakultas Ekonomi UNJ</p><p>Jl. Rawamangun, Jakarta Timur</p><p>Email: <a href="mailto:volunteerhub@g.id">volunteerhub@g.id</a></p></div>
+                </div>
+                <div class="text-center copyright"><p class="mb-0">© 2025 Volunteer Hub. All rights reserved.</p></div>
+            </div>
+        </footer>
+        </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Organization - Manage Volunteers (Waiting) - VolunteerHub</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    
+    <style>
+        .manage-vol-container {
+            max-width: 900px;
+            margin: auto;
+            padding: 30px 0;
+        }
+        .vol-review-card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border: 1px solid #eee;
+            position: relative;
+        }
+        .vol-review-card h5 {
+            font-weight: bold;
+            color: var(--vh-dark-text);
+            margin-bottom: 5px;
+        }
+        .vol-info-item {
+            font-size: 0.95rem;
+            color: #6c757d;
+            margin-bottom: 3px;
+        }
+        .vol-info-item i {
+            width: 25px;
+            color: #512da8; /* Ungu gelap untuk ikon */
+        }
+        .vol-section-title {
+            font-weight: 600;
+            margin-top: 10px;
+            margin-bottom: 5px;
+            color: var(--vh-dark-text);
+        }
+        .vol-section-content {
+            font-size: 0.95rem;
+            color: #6c757d;
+            margin-left: 5px;
+        }
+        /* Style untuk tombol di dalam Accepted/Rejected card */
+        .action-buttons-accepted-rejected {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            padding: 5px 12px;
+            border-radius: 20px;
+        }
+        .btn-accepted-tag {
+            background-color: #E6E0F8; /* Latar ungu muda */
+            color: #512da8; /* Teks ungu gelap */
+        }
+        .btn-rejected-tag {
+            background-color: #F8BBD0; /* Pink Muda */
+            color: #D04278; /* Merah Muda Gelap */
+            border: none;
+        }
+        
+        /* Tombol Accept/Reject untuk tab Waiting */
+        .action-buttons-group {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .action-buttons-group .btn {
+            width: 90px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border-radius: 20px;
+            padding: 8px 10px;
+        }
+        .btn-accept {
+            background-color: #4CAF50; /* Hijau */
+            color: white;
+            border: none;
+        }
+        .btn-reject {
+            background-color: #F8BBD0; /* Pink Muda */
+            color: #D04278; /* Merah Muda Gelap */
+            border: none;
+        }
+        
+        /* Tab Navigation Style */
+        .vol-tab-nav {
+            background-color: #E6E6E6; 
+            border-radius: 8px;
+            padding: 5px;
+            margin-bottom: 25px;
+            display: flex;
+        }
+        .vol-tab-btn {
+            flex-grow: 1;
+            text-align: center;
+            padding: 10px 15px;
+            font-weight: bold;
+            color: #6c757d;
+            background: none;
+            border: none;
+            border-radius: 6px;
+            transition: all 0.2s;
+            position: relative;
+        }
+        .vol-tab-btn.active {
+            background-color: white;
+            color: #512da8; /* Warna ungu utama */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .tab-count {
+            font-size: 0.8rem;
+            background-color: #512da8;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 10px;
+            margin-left: 5px;
+        }
+        .tab-content-item {
+            display: none; /* Default sembunyikan semua konten */
+        }
+        .tab-content-item.active {
+            display: block; /* Tampilkan konten aktif */
+        }
+    </style>
+</head>
+<body class="bg-light custom-bg">
+
+    <div class="d-flex flex-column min-vh-100">
+
+        <header class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+            <div class="container-fluid mx-lg-5">
+                <a class="navbar-brand fw-bold fs-4 custom-logo-color me-4" href="org_home.html">VolunteerHub</a>
+                
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link text-secondary" href="org_home.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-secondary" href="org_dashboard_main.html">Dashboard</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="d-flex align-items-center">
+                    <span class="me-3 text-secondary fw-bold fs-5" style="color: #9C27B0 !important;">Hi, Powerangers!</span>
+                    
+                    <a href="org_notification.html" class="notification-bell-icon me-3">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge">5</span>
+                    </a>
+                    
+                    <a href="org_login.html" class="rounded-circle d-flex align-items-center justify-content-center ms-2" 
+                    style="width: 40px; height: 40px; background-color: #EF5350; color: white; transition: background-color 0.2s;" 
+                    onmouseover="this.style.backgroundColor='#C62828'" 
+                    onmouseout="this.style.backgroundColor='#EF5350'" 
+                    title="Logout">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </a>
+                </div>
+            </div>
+        </header>
+        <main class="flex-grow-1 container manage-vol-container">
+            
+            <h2 class="fw-bold custom-text-dark">Manage Volunteers</h2>
+            <p class="text-secondary mb-4">Review and manage volunteers for your event.</p>
+
+            <div class="vol-tab-nav" role="tablist">
+                <button class="vol-tab-btn" id="btn-waiting" data-target="waiting-content" role="tab">
+                    Waiting <span class="tab-count">2</span>
+                </button>
+                <button class="vol-tab-btn" id="btn-accepted" data-target="accepted-content" role="tab">
+                    Accepted <span class="tab-count" style="background-color: #4CAF50;">4</span>
+                </button>
+                <button class="vol-tab-btn" id="btn-rejected" data-target="rejected-content" role="tab">
+                    Rejected <span class="tab-count" style="background-color: #D04278;">1</span>
+                </button>
+            </div>
+
+            <div id="tab-content">
+                
+                <div class="tab-content-item" id="waiting-content">
+                    <h4 class="fw-bold mb-3">Waiting (2)</h4>
+                    
+                    <div class="vol-review-card">
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="fas fa-user-circle fa-2x me-3" style="color: #512da8;"></i>
+                            <div>
+                                <h5 class="mb-0">Ahmad Fauzi</h5>
+                                <small class="text-secondary">Registered: 09 Oct, 2025</small>
+                            </div>
+                        </div>
+
+                        <div class="vol-info-item"><i class="fas fa-envelope"></i> ahmad@gmail.com</div>
+                        <div class="vol-info-item"><i class="fas fa-phone"></i> +62812xxxx888</div>
+                        <div class="vol-info-item"><i class="fas fa-map-marker-alt"></i> Jakarta Selatan</div>
+                        <div class="vol-info-item"><i class="fas fa-file-alt"></i> CV_Ahmad Fauzi.pdf</div>
+                        
+                        <p class="vol-section-title">Experience:</p>
+                        <p class="vol-section-content">Participated in 5 volunteer events</p>
+                        
+                        <p class="vol-section-title">Motivation:</p>
+                        <p class="vol-section-content">Want to contribute to the environment and meet new people</p>
+
+                        <div class="action-buttons-group">
+                            <button class="btn btn-accept"><i class="fas fa-check"></i> Accept</button>
+                            <button class="btn btn-reject"><i class="fas fa-times"></i> Reject</button>
+                        </div>
+                    </div>
+
+                    <div class="vol-review-card">
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="fas fa-user-circle fa-2x me-3" style="color: #512da8;"></i>
+                            <div>
+                                <h5 class="mb-0">Dewi Lestari</h5>
+                                <small class="text-secondary">Registered: 03 Oct, 2025</small>
+                            </div>
+                        </div>
+
+                        <div class="vol-info-item"><i class="fas fa-envelope"></i> lestari@gmail.com</div>
+                        <div class="vol-info-item"><i class="fas fa-phone"></i> +62822474023</div>
+                        <div class="vol-info-item"><i class="fas fa-file-alt"></i> CV_Dewi Lestari.pdf</div>
+                        
+                        <p class="vol-section-title">Experience:</p>
+                        <p class="vol-section-content">---</p>
+                        
+                        <p class="vol-section-title">Motivation:</p>
+                        <p class="vol-section-content">Want to contribute to the environment</p>
+
+                        <div class="action-buttons-group">
+                            <button class="btn btn-accept"><i class="fas fa-check"></i> Accept</button>
+                            <button class="btn btn-reject"><i class="fas fa-times"></i> Reject</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-content-item" id="accepted-content">
+                    <h4 class="fw-bold mb-3">Accepted (4)</h4>
+
+                    <div class="vol-review-card">
+                        <span class="action-buttons-accepted-rejected btn-accepted-tag">Accepted</span>
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="fas fa-user-circle fa-2x me-3" style="color: #512da8;"></i>
+                            <div>
+                                <h5 class="mb-0">Andi Pratama</h5>
+                                <small class="text-secondary">Registered: 07 Oct, 2025</small>
+                            </div>
+                        </div>
+
+                        <div class="vol-info-item"><i class="fas fa-envelope"></i> andi.pratama@mail.com</div>
+                        <div class="vol-info-item"><i class="fas fa-phone"></i> +6282474023</div>
+                        <div class="vol-info-item"><i class="fas fa-file-alt"></i> CV_Andi Pratama.pdf</div>
+                        
+                        <p class="vol-section-title">Experience:</p>
+                        <p class="vol-section-content">Participated in 7 volunteer events and meet new people</p>
+                        
+                        <p class="vol-section-title">Motivation:</p>
+                        <p class="vol-section-content">Want to contribute to the environment and meet new people</p>
+                    </div>
+                    
+                    <div class="vol-review-card">
+                        <span class="action-buttons-accepted-rejected btn-accepted-tag">Accepted</span>
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="fas fa-user-circle fa-2x me-3" style="color: #512da8;"></i>
+                            <div>
+                                <h5 class="mb-0">Siti Nurhaliza</h5>
+                                <small class="text-secondary">Registered: 07 Oct, 2025</small>
+                            </div>
+                        </div>
+
+                        <div class="vol-info-item"><i class="fas fa-envelope"></i> siti@gmail.com</div>
+                        <div class="vol-info-item"><i class="fas fa-phone"></i> +6282474023</div>
+                        <div class="vol-info-item"><i class="fas fa-file-alt"></i> CV_Siti Nurhaliza.pdf</div>
+                        
+                        <p class="vol-section-title">Experience:</p>
+                        <p class="vol-section-content">Participated in 3 volunteer events as a Project Officer</p>
+                        
+                        <p class="vol-section-title">Motivation:</p>
+                        <p class="vol-section-content">Want to contribute to the environment and make an impact</p>
+                    </div>
+
+                    <div class="vol-review-card">
+                        <span class="action-buttons-accepted-rejected btn-accepted-tag">Accepted</span>
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="fas fa-user-circle fa-2x me-3" style="color: #512da8;"></i>
+                            <div>
+                                <h5 class="mb-0">Budi Santoso</h5>
+                                <small class="text-secondary">Registered: 08 Oct, 2025</small>
+                            </div>
+                        </div>
+
+                        <div class="vol-info-item"><i class="fas fa-envelope"></i> budi@gmail.com</div>
+                        <div class="vol-info-item"><i class="fas fa-phone"></i> +6282474023</div>
+                        <div class="vol-info-item"><i class="fas fa-map-marker-alt"></i> Jakarta Timur</div>
+                        <div class="vol-info-item"><i class="fas fa-file-alt"></i> CV_Budi Santoso.pdf</div>
+                        
+                        <p class="vol-section-title">Experience:</p>
+                        <p class="vol-section-content">Active volunteer in the local community</p>
+                        
+                        <p class="vol-section-title">Motivation:</p>
+                        <p class="vol-section-content">Passionate about environmental cleanliness</p>
+                    </div>
+
+                    <div class="vol-review-card">
+                        <span class="action-buttons-accepted-rejected btn-accepted-tag">Accepted</span>
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="fas fa-user-circle fa-2x me-3" style="color: #512da8;"></i>
+                            <div>
+                                <h5 class="mb-0">Rina Kusuma</h5>
+                                <small class="text-secondary">Registered: 08 Oct, 2025</small>
+                            </div>
+                        </div>
+
+                        <div class="vol-info-item"><i class="fas fa-envelope"></i> rina@gmail.com</div>
+                        <div class="vol-info-item"><i class="fas fa-phone"></i> +6282474023</div>
+                        <div class="vol-info-item"><i class="fas fa-file-alt"></i> CV_Rina Kusuma.pdf</div>
+                        
+                        <p class="vol-section-title">Experience:</p>
+                        <p class="vol-section-content">Participant in 2 event</p>
+                        
+                        <p class="vol-section-title">Motivation:</p>
+                        <p class="vol-section-content">Want to contribute to the environment</p>
+                    </div>
+                </div>
+
+                <div class="tab-content-item" id="rejected-content">
+                    <h4 class="fw-bold mb-3">Rejected (1)</h4>
+                    
+                    <div class="vol-review-card">
+                        <span class="action-buttons-accepted-rejected btn-rejected-tag">Rejected</span>
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="fas fa-user-circle fa-2x me-3" style="color: #512da8;"></i>
+                            <div>
+                                <h5 class="mb-0">Rudi Hermawan</h5>
+                                <small class="text-secondary">Registered: 07 Oct, 2025</small>
+                            </div>
+                        </div>
+
+                        <div class="vol-info-item"><i class="fas fa-envelope"></i> rudi@gmail.com</div>
+                        <div class="vol-info-item"><i class="fas fa-phone"></i> +6282474023</div>
+                        <div class="vol-info-item"><i class="fas fa-map-marker-alt"></i> Jakarta Selatan</div>
+                        <div class="vol-info-item"><i class="fas fa-file-alt"></i> CV_Rudi Hermawan.pdf</div>
+                        
+                        <p class="vol-section-title">Experience:</p>
+                        <p class="vol-section-content">---</p>
+                        
+                        <p class="vol-section-title">Motivation:</p>
+                        <p class="vol-section-content">Want to contribute</p>
+                    </div>
+
+                </div>
+
+            </div>
+            
+        </main>
+
+        <footer class="text-white custom-footer-bg footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 mb-4 mb-md-0">
+                        <div class="footer-logo-container"><div class="footer-logo-icon">V</div><span class="footer-logo-text">VolunteerHub</span></div>
+                        <p class="footer-description">Platform penghubung mahasiswa dengan kesempatan volunteer dari penyelenggara (kampus, NGO, komunitas, maupun event).</p>
+                    </div>
+
+                    <div class="col-6 col-md-2 footer-link-group"><h6>Quick Links</h6><a href="org_home.html">Home</a><a href="org_dashboard_main.html">Dashboard</a><a href="#">Manage Ops</a><a href="notification.html">Notification</a></div>
+                    <div class="col-6 col-md-3 footer-link-group"><h6>Category</h6><a href="#">Environment & Nature</a><a href="#">Education & Mentoring</a><a href="#">Social & Humanitarian</a><a href="#">Arts, Culture & Creativity</a><a href="#">Health & Fitness</a><a href="#">Technology & Digital</a><a href="#">Events & Festivals</a></div>
+                    <div class="col-md-3 footer-link-group contact-info"><h6>Contact</h6><p>Fakultas Ekonomi UNJ</p><p>Jl. Rawamangun, Jakarta Timur</p><p>Email: <a href="mailto:volunteerhub@g.id">volunteerhub@g.id</a></p></div>
+                </div>
+                <div class="text-center copyright"><p class="mb-0">© 2025 Volunteer Hub. All rights reserved.</p></div>
+            </div>
+        </footer>
+        </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const tabButtons = document.querySelectorAll('.vol-tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content-item');
+
+            // Fungsi untuk menampilkan tab yang dipilih
+            function showTab(targetId) {
+                // Sembunyikan semua konten dan hapus status active dari semua tombol
+                tabContents.forEach(content => content.classList.remove('active'));
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+
+                // Tampilkan konten yang sesuai
+                const targetContent = document.getElementById(targetId);
+                if (targetContent) {
+                    targetContent.classList.add('active');
+                }
+
+                // Aktifkan tombol yang sesuai
+                const targetButton = document.querySelector(`[data-target="${targetId}"]`);
+                if (targetButton) {
+                    targetButton.classList.add('active');
+                }
+            }
+
+            // Inisialisasi tampilan tab saat halaman dimuat
+            // DEFAULT ke 'waiting-content'
+            showTab('waiting-content');
+
+            // Menambahkan event listener pada setiap tombol tab
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const targetId = button.getAttribute('data-target');
+                    showTab(targetId);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

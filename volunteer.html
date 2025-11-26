@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteer - VolunteerHub</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-light custom-bg">
+
+    <div class="d-flex flex-column min-vh-100">
+
+        <header class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+            <div class="container-fluid mx-lg-5">
+                <a class="navbar-brand fw-bold fs-4 custom-logo-color me-4" href="home.html">VolunteerHub</a>
+                
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link text-secondary" href="home.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link active fw-bold custom-link" href="volunteer.html">Volunteer</a></li>
+                        <li class="nav-item"><a class="nav-link text-secondary" href="dashboard.html">Dashboard</a></li>
+                    </ul>
+                </div>
+
+                <div class="d-flex align-items-center">
+                    <span class="me-3 text-secondary">Hi, Bup!</span>
+                    <a href="notification.html" class="notification-bell-icon me-3">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge">3</span>
+                    </a>
+                    <a href="index.html" class="rounded-circle bg-secondary d-flex align-items-center justify-content-center" style="width: 40px; height: 40px; color: white;" title="Logout"><i class="fas fa-sign-out-alt"></i></a> 
+                </div>
+                </div>
+        </header>
+
+        <main class="flex-grow-1 container py-4 main-content-area">
+            
+            <div class="hero-banner custom-volunteer-hero">
+                <div class="hero-text text-start pe-lg-5">
+                    <h1 class="custom-volunteer-title">Your <span class="custom-link">Impact,</span><br> Your <span class="custom-link">Story.</span></h1>
+                    
+                    <form class="input-group mt-4">
+                        <input type="text" class="form-control form-control-lg" placeholder="Search here" style="border-radius: 8px 0 0 8px;">
+                        <button class="btn custom-btn-green" type="submit" style="border-radius: 0 8px 8px 0;"><i class="fas fa-search"></i> Clear</button>
+                    </form>
+                </div>
+                <img src="https://picsum.photos/600/300?random=11" alt="Ilustrasi Volunteer" class="hero-image d-none d-lg-block">
+            </div>
+
+            <section class="mb-5">
+                <h3 class="mb-4 fw-bold custom-text-dark">Featured Opportunities</h3>
+                <div class="row">
+                    
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card opportunity-card">
+                            <img src="https://picsum.photos/400/150?random=12" class="card-img-top" alt="Nanda Harmoni">
+                            <div class="card-body">
+                                <h5 class="card-title">Nanda Harmoni: Volunteer Festival Amal</h5>
+                                <p class="card-text text-secondary" style="font-size: 0.9rem;">Bantu event, logistik, musik, dan fundraising.</p>
+                                <div class="card-meta">
+                                    <div class="meta-item"><i class="fas fa-music"></i> Event, Festival, Musik, Fundraising</div>
+                                    <div class="meta-item"><i class="fas fa-map-marker-alt"></i> Surabaya</div>
+                                    <div class="meta-item"><i class="fas fa-clock"></i> 2 Days</div>
+                                </div>
+                                <div class="card-footer-action pt-2 border-top">
+                                    <span class="days-left">Deadline 2 Minggu</span>
+                                    <a href="detail.html" class="btn btn-detail">See details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card opportunity-card">
+                            <img src="https://picsum.photos/400/150?random=13" class="card-img-top" alt="Mentari Harapan">
+                            <div class="card-body">
+                                <h5 class="card-title">Mentari Harapan: Kelas Inspirasi</h5>
+                                <p class="card-text text-secondary" style="font-size: 0.9rem;">Mengajar dan *role-play* untuk siswa SD/SMP.</p>
+                                <div class="card-meta">
+                                    <div class="meta-item"><i class="fas fa-graduation-cap"></i> Education & Mentoring, Public Speaking</div>
+                                    <div class="meta-item"><i class="fas fa-map-marker-alt"></i> Jakarta Pusat</div>
+                                    <div class="meta-item"><i class="fas fa-clock"></i> 3 Weeks</div>
+                                </div>
+                                <div class="card-footer-action pt-2 border-top">
+                                    <span class="days-left">Deadline 5 Hari</span>
+                                    <a href="detail.html" class="btn btn-detail">See details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card opportunity-card">
+                            <img src="https://picsum.photos/400/150?random=14" class="card-img-top" alt="Aksi Peduli">
+                            <div class="card-body">
+                                <h5 class="card-title">Aksi Peduli Sesama: Donasi Sembako</h5>
+                                <p class="card-text text-secondary" style="font-size: 0.9rem;">Membantu distribusi sembako bagi yang membutuhkan.</p>
+                                <div class="card-meta">
+                                    <div class="meta-item"><i class="fas fa-hand-holding-heart"></i> Social & Humanitarian, Donation</div>
+                                    <div class="meta-item"><i class="fas fa-map-marker-alt"></i> USU</div>
+                                    <div class="meta-item"><i class="fas fa-clock"></i> 1 Week</div>
+                                </div>
+                                <div class="card-footer-action pt-2 border-top">
+                                    <span class="days-left">Deadline 1 Hari</span>
+                                    <a href="detail.html" class="btn btn-detail">See details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="mb-5">
+                <h3 class="mb-4 fw-bold custom-text-dark">Skills Needed</h3>
+                <div class="row">
+                    
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card opportunity-card">
+                            <img src="https://picsum.photos/400/150?random=15" class="card-img-top" alt="Bakti Kasih">
+                            <div class="card-body">
+                                <h5 class="card-title">Bakti Kasih: Kunjungan Panti Jompo</h5>
+                                <p class="card-text text-secondary" style="font-size: 0.9rem;">Menciptakan suasana hangat di panti jompo.</p>
+                                <div class="card-meta">
+                                    <div class="meta-item"><i class="fas fa-hand-holding-heart"></i> Social & Humanitarian, Communication</div>
+                                    <div class="meta-item"><i class="fas fa-map-marker-alt"></i> Bandung</div>
+                                    <div class="meta-item"><i class="fas fa-clock"></i> 1 Day</div>
+                                </div>
+                                <div class="card-footer-action pt-2 border-top">
+                                    <span class="days-left">Deadline 3 Hari</span>
+                                    <a href="detail.html" class="btn btn-detail">See details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card opportunity-card">
+                            <img src="https://picsum.photos/400/150?random=16" class="card-img-top" alt="Aksi Peduli">
+                            <div class="card-body">
+                                <h5 class="card-title">Aksi Peduli Sesama: Donasi Sembako</h5>
+                                <p class="card-text text-secondary" style="font-size: 0.9rem;">Identifikasi yang sudah tidak terpakai ke barang yang berguna.</p>
+                                <div class="card-meta">
+                                    <div class="meta-item"><i class="fas fa-hand-holding-heart"></i> Social & Humanitarian, Donation</div>
+                                    <div class="meta-item"><i class="fas fa-map-marker-alt"></i> UIN</div>
+                                    <div class="meta-item"><i class="fas fa-clock"></i> 1 Week</div>
+                                </div>
+                                <div class="card-footer-action pt-2 border-top">
+                                    <span class="days-left">Deadline 1 Hari</span>
+                                    <a href="detail.html" class="btn btn-detail">See details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card opportunity-card">
+                            <img src="https://picsum.photos/400/150?random=17" class="card-img-top" alt="Mentari Harapan">
+                            <div class="card-body">
+                                <h5 class="card-title">Mentari Harapan: Kelas Inspirasi</h5>
+                                <p class="card-text text-secondary" style="font-size: 0.9rem;">Mengajarkan anak-anak SD mengenai literasi & motivasi.</p>
+                                <div class="card-meta">
+                                    <div class="meta-item"><i class="fas fa-graduation-cap"></i> Education & Mentoring, Public Speaking</div>
+                                    <div class="meta-item"><i class="fas fa-map-marker-alt"></i> Jakarta Pusat</div>
+                                    <div class="meta-item"><i class="fas fa-clock"></i> 3 Weeks</div>
+                                </div>
+                                <div class="card-footer-action pt-2 border-top">
+                                    <span class="days-left">Deadline 5 Hari</span>
+                                    <a href="detail.html" class="btn btn-detail">See details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="text-white custom-footer-bg footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 mb-4 mb-md-0">
+                        <div class="footer-logo-container"><div class="footer-logo-icon">V</div><span class="footer-logo-text">VolunteerHub</span></div>
+                        <p class="footer-description">Platform penghubung mahasiswa dengan kesempatan volunteer dari penyelenggara (kampus, NGO, komunitas, maupun event).</p>
+                    </div>
+
+                    <div class="col-6 col-md-2 footer-link-group"><h6>Quick Links</h6><a href="home.html">Home</a><a href="volunteer.html">Volunteer</a><a href="dashboard.html">Dashboard</a><a href="notification.html">Notification</a></div>
+                    <div class="col-6 col-md-3 footer-link-group"><h6>Category</h6><a href="#">Environment & Nature</a><a href="#">Education & Mentoring</a><a href="#">Social & Humanitarian</a><a href="#">Arts, Culture & Creativity</a><a href="#">Health & Fitness</a><a href="#">Technology & Digital</a><a href="#">Events & Festivals</a></div>
+                    <div class="col-md-3 footer-link-group contact-info"><h6>Contact</h6><p>Fakultas Ekonomi UNJ</p><p>Jl. Rawamangun, Jakarta Timur</p><p>Email: <a href="mailto:volunteerhub@g.id">volunteerhub@g.id</a></p></div>
+                </div>
+                <div class="text-center copyright"><p class="mb-0">© 2025 Volunteer Hub. All rights reserved.</p></div>
+            </div>
+        </footer>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
